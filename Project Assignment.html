@@ -1,0 +1,81 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title>COP 4710 Spring 2013 Term Project</title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="949.54">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Arial}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Arial; min-height: 14.0px}
+    p.p3 {margin: 0.0px 0.0px 0.0px 0.0px; font: 13.0px Arial}
+    p.p4 {margin: 0.0px 0.0px 13.0px 0.0px; font: 13.0px Arial}
+    p.p5 {margin: 0.0px 0.0px 0.0px 0.0px; line-height: 14.0px; font: 13.0px Arial}
+    p.p6 {margin: 0.0px 0.0px 0.0px 0.0px; font: 13.0px Arial; min-height: 15.0px}
+    p.p7 {margin: 0.0px 0.0px 0.0px 48.0px; text-indent: -24.0px; font: 13.0px Arial}
+    span.s1 {text-decoration: underline ; color: #000df7}
+    span.s2 {text-decoration: underline ; color: #000dff}
+    span.s3 {font: 13.0px Lucida Grande}
+    span.s4 {font: 9.0px Times New Roman}
+    ol.ol1 {list-style-type: decimal}
+  </style>
+</head>
+<body>
+<h2>COP 4710 Spring 2013 Term Project</h2>
+<h3>An Online Enterprise Information System</h3>
+<p class="p3">Final Due Date: 11:30pm, April 27, 2013 (Saturday), project report and code should be submitted by this deadline. A demonstration of your system will be scheduled during the week of 04/22/13-04/26/13. Exact date of the demo will be announced later.</p>
+    <p class="p3">There are two additional deadlines for this project by which you are required to submit two intermediate reports. Furthermore, if you send Dr. Tu (ytu@cse.usf.edu) the roster of your team by 11:30pm, 02/15/2013, you get a 1% bonus. </p>
+
+
+<!--			An <a href="JDBC-Intro.pdf">Introduction</a> to using JDBC in 
+netcluster and sample <a href="create_table.java">code</a>.</p>
+-->
+<p class="p4">&nbsp; </p>
+<p class="p4"><b>Introduction</b></p>
+<p class="p4">In this project, you are expected to design and develop an online enterprise management system with non-trivial functionalities. You can choose whatever enterprise you want to support, and we tend not to provide detailed specifications. However, as a guideline for grading, we expect the following features from your system:</p>
+<ol class="ol1">
+  <li style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 14.0px; font: 13.0px Arial">Your system should be backed up by a database built under a DBMS such as Oracle;</li>
+  <li style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 14.0px; font: 13.0px Arial">Your system should have a text-based or web-based interface to interact with a human user;</li>
+  <li style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 14.0px; font: 13.0px Arial">You should support some application logic written in a general programming language.</li>
+</ol>
+<p class="p4">More specifically, we want to see the following features in your system:</p>
+<ol class="ol1">
+  <li style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 14.0px; font: 13.0px Arial">A database that consists of at least three relations, and you should load the tables with some data (you need to either make up some data or borrow data from other sources with permission from the data owner);<span class="Apple-converted-space"> </span></li>
+  <li style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 14.0px; font: 13.0px Arial">At least eight different types of queries (in terms of SQL statements) should be supported by your system. You must have some queries that can modify the content of your database;<span class="Apple-converted-space"> </span></li>
+  <li style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 14.0px; font: 13.0px Arial">A text-based (or web-based) interface with at least three different appearances (or web pages);</li>
+  <li style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 14.0px; font: 13.0px Arial">Utilization of JDBC/ODBC (or other communication protocols) to connect to the database and send in queries;</li>
+</ol>
+<p class="p3">Accomplishment of all above four features will guarantee you a high B grade (i.e., &gt; 80% of total points) in the project (assuming you do an OK job in the demo and the report).  To get a higher grade, you can implement the following extra functionalities:</p>
+<ol class="ol1">
+  <li style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 14.0px; font: 13.0px Arial">Create users for your system, assign userID/password to them;</li>
+  <li style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 14.0px; font: 13.0px Arial">Create views for your database, assign different privileges to different users;</li>
+  <li style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 14.0px; font: 13.0px Arial">Using stored procedures/functions to process application logic on the database side;</li>
+  <li style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 14.0px; font: 13.0px Arial">Using client-side scripts (e.g., JavaScript) to process application logic;</li>
+  <li style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 14.0px; font: 13.0px Arial">Any other features that are relevant to the system.</li>
+</ol>
+<p class="p4"><b>Getting Started</b></p>
+<p class="p4"><span class="Apple-converted-space">Reading the design and relevant code of a sample system will be a good way to get started. Here we have the code and descriptions of an online
+			<a href="http://www.cse.usf.edu/~ytu/teaching/COP4710/proj4/bookshop_files/index.html"> bookshop</a> system that you can download and study. It is implementated using JSP. You can also find the Java code (which I will use in class to show a demo) that encapsultes simple SQL queries and manipulation of query results using JDBC <a href="http://www.cse.usf.edu/~ytu/teaching/COP4710/proj4/create_table.java">here</a>. Before trying that piece of code, you need to read <a href="http://www.cse.usf.edu/~ytu/teaching/COP4710/proj4/JDBC-Intro.pdf">this</a> document that tells you how to set up JDBC on the client side.&nbsp;&nbsp;  </span></p>
+     <p class="p4"><span class="Apple-converted-space">The following <a href="http://www.cse.usf.edu/~ytu/teaching/COP4710/proj4/ch6.pdf">file</a> holds more examples of system design. For that we thank Connolly and Begg, from whose book these case studies are extracted.&nbsp;&nbsp;</span></p>
+    <p class="p4"><span class="Apple-converted-space">If you feel uncomfortable designing a non-trivial system from scratch, you may choose to work on one of the databases that Dr. Tu and his colleagues from USF College of Arts and Sciences are trying to develop for research purposes. In such cases, graduate students will help you with the design and you can focus on the implementation.&nbsp;&nbsp;</span></p>
+    
+<p class="p4"><b>Environment</b></p>
+<p class="p4">In this project, you get to choose the platform to work on. The most successful demonstrations from previous years were done in standalone machines (e.g., a laptop) where students installed their own DBMS and application servers. I suggest you follow that strategy - by that you are not vulnerable to all kinds of problems caused by sharing a server with other (sometimes inexperienced) users. <span class="Apple-converted-space"> </span></p>
+<p class="p4">On the other hand, you can also use the Oracle server at newnet.csee.usf.edu that has been running for a while. The server has JDBC driver loaded therefore you can start communicating with the database with minor changes in your client machine environment. For those of you who choose to write dynamic pages (e.g., using JSP/ASP), you probably have to set up your own application server.<span class="Apple-converted-space"> </span></p>
+<p class="p4"><b>Deliverables and Grading</b></p>
+<p class="p3">By the project due date, you are required to show the functionalities of your system in a 10-minute demonstration. You also need to finish a report describing your design and the main functionalities. You are encouraged to paste sample code to the report to explain your implementation. A sample report can be found <a href="http://www.cse.usf.edu/~ytu/teaching/COP4710/proj4/Internet-Shop-design.pdf"><span class="s2">here</span></a>. We also need you to submit all code (JSP, html, Java, procedures, SQL statements …) you wrote for this project. To be specific, you are required to submit two files: one containing your report and another compressed file containing the code. For the latter, you should put all the code files into a folder and compress that folder into a file named proj4-xxx.tar or proj4-xxx.zip where xxx is the NetID of one of the group members. One submission is sufficient for each group.<span class="Apple-converted-space"> </span></p>
+    <p class="p6"><br></p>
+<p class="p3">By 11:30pm of 03/10/2013, you should submit a mini report with your conceptual design of the information system you are building. In this report, you should use a ER diagram to explain your design, and put all entities sets, relationship sets, as well as their attributes, relevant and reasonable constraints into the diagram. <span class="Apple-converted-space"> </span></p>
+<p class="p6"><br></p>
+<p class="p3">By 11:30pm of 03/24/2013, you are required to submit a short report that shows you have implemented an initial version of all three tiers (i.e., interface, application logic, and database) of the proposed system design. The functionalities implemented for each tier, however, can be of the simplest form when this report is due. To convince us that the system is in a working state, you can either show some screenshots or copy chunks of code in the report, or do both. <span class="Apple-converted-space"> </span></p>
+<p class="p6"><br></p>
+<p class="p3">The project is worth 25 points (out of 100 for the whole semster). The intermediate reports will be 1 point each, and the final report is worth 3 points. The rest of the project will be graded based on the functionalities implemented (15 points), and the quality of the demonstration (5 points). We will set up a time for the demo session such that all students can attend and grade the demos shown by other groups. <span class="Apple-converted-space"> </span></p>
+<p class="p3"> </p>
+<p class="p3"><b>Other Issues</b></p>
+<p class="p7"><span class="s3">·</span><span class="s4">         </span>This project is supposed to be done by 3-person groups. If you choose to work by yourself or form 2-person groups, you are expected to do the same amount of work as the other groups. If you have trouble finding partners, please let Dr. Tu know asap.</p>
+<p class="p7"><span class="s3">·</span><span class="s4">         </span>Copying code from the Internet or other sources without an explicit statement will be regarded as plagiarism.</p>
+<p class="p7"><span class="s3">·</span><span class="s4">         </span>More messages on various technical topics related to this project will be posted. But do NOT wait till you see more of such messages. Start NOW by talking to fellow students to form a group! </p>
+<p class="p7"><span class="s3">·</span><span class="s4">         </span>Late submissions are still acceptable if you have free tokens left, but each day beyond the deadline will cost a team n tokens where n is the number of persons in the team.</p>
+</body>
+</html>
