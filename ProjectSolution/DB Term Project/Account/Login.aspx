@@ -10,8 +10,7 @@
     <p>
         Please enter your username and password.
         Ask a manager to create an account for you if you do not have one.
-        <asp:HyperLink ID="RegisterHyperLink" runat="server">Register</asp:HyperLink>
-    </p>
+        </p>
     <asp:Login ID="LoginUser" runat="server" EnableViewState="false" 
         RenderOuterTable="false" onauthenticate="LoginUser_Authenticate">
         <LayoutTemplate>
@@ -33,7 +32,7 @@
                     <p>
                         <asp:Label ID="PasswordLabel" runat="server" AssociatedControlID="Password">Password:</asp:Label>
                         <asp:TextBox ID="Password" runat="server" CssClass="passwordEntry" 
-                            TextMode="Password" ontextchanged="Password_TextChanged"></asp:TextBox>
+                            TextMode="Password"></asp:TextBox>
                         <asp:RequiredFieldValidator ID="PasswordRequired" runat="server" ControlToValidate="Password" 
                              CssClass="failureNotification" ErrorMessage="Password is required." ToolTip="Password is required." 
                              ValidationGroup="LoginUserValidationGroup">*</asp:RequiredFieldValidator>
