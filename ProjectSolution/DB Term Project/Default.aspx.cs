@@ -13,5 +13,9 @@ namespace DB_Term_Project
         {
 
         }
+        protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+         
+        }
     }
 }
