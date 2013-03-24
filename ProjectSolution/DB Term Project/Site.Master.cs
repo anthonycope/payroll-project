@@ -1,4 +1,9 @@
-﻿using System;
+﻿/******************************************************************************************************************
+ * Note that currently the dynamically added options (links on the navigation bar containing "Home", "About", etc)
+ * simply redirects the user to the home page because the proper pages have not been created yet.
+ * ****************************************************************************************************************/
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -9,23 +14,52 @@ namespace DB_Term_Project
 {
     public partial class SiteMaster : System.Web.UI.MasterPage
     {
-        //Keeps track of the items on the navigation bar. Makes it easier to reference those
-        //items by index later.
-        private enum items { home, addUser, about };
-        private MenuItem addUserItem = new MenuItem ("Create New User");
+        //Keeps track of the items on the navigation bar; they're listed in the order in which
+        // they appear in the navigation bar. This makes it easier to reference those items by index later.
+        private enum items { home, about };
+
+        //Menu item IDs
+        static string createUserID = "New User"; //ID for MenuItem_createUserItem object
+        static string payrollID = "Payroll"; //ID for MenuItem_payrollItem object
+        static string payHistoryID = "Pay History"; //ID for MenuItem_myPayHistory object
+
+        //Items (options) to be added to navigation bar at run-time based on the type of user that is logged in.
+        private MenuItem MenuItem_createUserItem = new MenuItem ("Create New User", createUserID);
+        private MenuItem MenuItem_payrollItem = new MenuItem("View Payroll", payrollID);
+        private MenuItem MenuItem_myPayHistory = new MenuItem("View My Pay History", payHistoryID);
 
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            int index = (int)items.addUser;
-            addUserItem.NavigateUrl = "~/Default.aspx";
+            MenuItem_createUserItem.NavigateUrl = "~/Account/Register.aspx";
+            MenuItem_myPayHistory.NavigateUrl = "~/Default.aspx";
+            MenuItem_payrollItem.NavigateUrl = "~/Default.aspx";
+            updateUserOptions(); //Shows appropriate options based on the user's login privileges
+        }
 
+        /// <summary>
+        /// Adds admin options to navigation bar if an admin user is logged in.
+        /// Removes them otherwise.
+        /// </summary>
+        private void updateUserOptions()
+        {
+            int myPayIndex = (int)items.home + 1; //Add the "View My Pay History" to the right of "Home"
+            int createUserIndex = myPayIndex + 1; //Add the "Create User" to the right of "View My Pay History"
+            int payrollIndex = createUserIndex + 1; //Add the "Create User" to the right of "Create User"
+
+            /*Add "View My Pay History" option*/
+            if (Account.Login.IsLoggedIn)
+                    NavigationMenu.Items.AddAt(myPayIndex, MenuItem_myPayHistory); //Add the "Create New User" link
+
+
+            /*Add  "Create New User" option*/
             if (Account.Login.IsAdmin)
-                if (NavigationMenu.Items [index].Value != "New User") //Add the "Create New User" link if it hasn't been already added
-                    NavigationMenu.Items.AddAt(index, addUserItem);
-            else
-                if (NavigationMenu.Items[index].Value == "New User") //Remove the "Create New User" link if it hasn't already been removed
-                    NavigationMenu.Items.RemoveAt(index);
+                    NavigationMenu.Items.AddAt(createUserIndex, MenuItem_createUserItem); //Add the "Create New User" link         
+
+            /*Add "View Payroll" option*/
+            if (Account.Login.IsAdmin)
+                NavigationMenu.Items.AddAt(payrollIndex, MenuItem_payrollItem); //Add the "View Payroll" link
+    
         }
     }
 }

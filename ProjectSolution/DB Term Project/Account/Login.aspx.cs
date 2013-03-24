@@ -10,6 +10,7 @@ namespace DB_Term_Project.Account
     public partial class Login : System.Web.UI.Page
     {
         static bool isAdmin = false;
+        static bool isLoggedIn = false;
         string adminPassword = "f%x`gAC3[y{6L1z0";
 
         protected void Page_Load(object sender, EventArgs e)
@@ -32,7 +33,8 @@ namespace DB_Term_Project.Account
         {
             if (LoginUser.UserName == "admin" && LoginUser.Password == adminPassword)
             {
-                isAdmin = true;
+                isAdmin = !isAdmin; //For debugging purposes until we get the solution connected to the database.
+                isLoggedIn = !isLoggedIn; //For debugging purposes
                 Response.Redirect("/Default.aspx");                
             }
             else
@@ -46,6 +48,14 @@ namespace DB_Term_Project.Account
         static public bool IsAdmin
         {
             get { return isAdmin; }
+        }
+
+        /// <summary>
+        /// Returns true if the user is logged in
+        /// </summary>
+        static public bool IsLoggedIn
+        {
+            get { return isLoggedIn; }
         }
     }
 }
