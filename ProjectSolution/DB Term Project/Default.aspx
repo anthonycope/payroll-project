@@ -9,7 +9,8 @@
     <h2>
         &nbsp;<asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" 
             DataKeyNames="Eid" DataSourceID="SqlDataSource1" 
-            EmptyDataText="There are no data records to display.">
+            EmptyDataText="There are no data records to display." 
+            onselectedindexchanged="GridView1_SelectedIndexChanged1">
             <Columns>
                 <asp:BoundField DataField="Eid" HeaderText="Eid" ReadOnly="True" 
                     SortExpression="Eid" />
@@ -26,10 +27,14 @@
         <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
             ConnectionString="<%$ ConnectionStrings:DBProjectConnectionString1 %>" 
             DeleteCommand="DELETE FROM [Employees] WHERE [Eid] = @Eid" 
-            InsertCommand="INSERT INTO [Employees] ([Eid], [username], [password], [name], [address], [birthdate], [position], [mgrid]) VALUES (@Eid, @username, @password, @name, @address, @birthdate, @position, @mgrid)" 
+            InsertCommand="INSERT INTO [Employees] ([Eid], [username], [password], [name], [address],
+                           [birthdate], [position], [mgrid]) VALUES (@Eid, @username, @password, @name, @address, @birthdate, @position, @mgrid)" 
             ProviderName="<%$ ConnectionStrings:DBProjectConnectionString1.ProviderName %>" 
-            SelectCommand="SELECT [Eid], [username], [password], [name], [address], [birthdate], [position], [mgrid] FROM [Employees]" 
-            UpdateCommand="UPDATE [Employees] SET [username] = @username, [password] = @password, [name] = @name, [address] = @address, [birthdate] = @birthdate, [position] = @position, [mgrid] = @mgrid WHERE [Eid] = @Eid">
+            SelectCommand="SELECT [Eid], [username], [password], [name], [address],
+                           [birthdate], [position], [mgrid] FROM [Employees] WHERE ([position] = @position)" 
+            
+            UpdateCommand="UPDATE [Employees] SET [username] = @username, [password] = @password,
+             [name] = @name, [address] = @address, [birthdate] = @birthdate, [position] = @position, [mgrid] = @mgrid WHERE [Eid] = @Eid">
             <DeleteParameters>
                 <asp:Parameter Name="Eid" Type="Int32" />
             </DeleteParameters>
@@ -43,6 +48,10 @@
                 <asp:Parameter Name="position" Type="String" />
                 <asp:Parameter Name="mgrid" Type="Int32" />
             </InsertParameters>
+            <SelectParameters>
+                <asp:ControlParameter ControlID="TextBox1" DefaultValue="Engineer" 
+                    Name="position" PropertyName="Text" Type="String" />
+            </SelectParameters>
             <UpdateParameters>
                 <asp:Parameter Name="username" Type="String" />
                 <asp:Parameter Name="password" Type="String" />
@@ -56,5 +65,6 @@
         </asp:SqlDataSource>
     </h2>
     <p>
-        &nbsp;</p>
+        <asp:TextBox ID="TextBox1" runat="server" ontextchanged="TextBox1_TextChanged"></asp:TextBox>
+    </p>
 </asp:Content>
