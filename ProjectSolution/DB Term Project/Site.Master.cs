@@ -38,8 +38,7 @@ namespace DB_Term_Project
         }
 
         /// <summary>
-        /// Adds admin options to navigation bar if an admin user is logged in.
-        /// Removes them otherwise.
+        /// Adds add appropriate options for the type of user logged in
         /// </summary>
         private void updateUserOptions()
         {
@@ -47,16 +46,16 @@ namespace DB_Term_Project
             int createUserIndex = myPayIndex + 1; //Add the "Create User" to the right of "View My Pay History"
             int payrollIndex = createUserIndex + 1; //Add the "Create User" to the right of "Create User"
 
-            /*Add "View My Pay History" option*/
+            /*Add "View My Pay History" option for any user*/
             if (Account.Login.IsLoggedIn)
                     NavigationMenu.Items.AddAt(myPayIndex, MenuItem_myPayHistory); //Add the "Create New User" link
 
 
-            /*Add  "Create New User" option*/
+            /*Add  "Create New User" option for admin*/
             if (Account.Login.IsAdmin)
                     NavigationMenu.Items.AddAt(createUserIndex, MenuItem_createUserItem); //Add the "Create New User" link         
 
-            /*Add "View Payroll" option*/
+            /*Add "View Payroll" option for admin*/
             if (Account.Login.IsAdmin)
                 NavigationMenu.Items.AddAt(payrollIndex, MenuItem_payrollItem); //Add the "View Payroll" link
     
