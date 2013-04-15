@@ -5,6 +5,11 @@ DECLARE @day date = '2013-04-20';
 
 DECLARE @hours real = 7.5;
 
+
+DELETE
+FROM DBProject.dbo.Daily_Hours DailyHours
+WHERE DailyHours.Eid = @eid AND DailyHours.Day_Of = @day;
+
 INSERT INTO DBProject.dbo.Daily_Hours(Eid, Day_Of, Hours_Worked)
 	VALUES(@eid, @day, @hours);
 --
