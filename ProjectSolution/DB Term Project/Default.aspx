@@ -10,7 +10,8 @@
         &nbsp;<asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" 
             DataKeyNames="Eid" DataSourceID="SqlDataSource1" 
             EmptyDataText="There are no data records to display." CellPadding="4" 
-            ForeColor="#333333" GridLines="None" Height="191px" BorderStyle="Solid">
+            ForeColor="#333333" GridLines="None" Height="191px" BorderStyle="Solid" 
+            onselectedindexchanged="GridView1_SelectedIndexChanged">
             <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
             <Columns>
                 <asp:BoundField DataField="Eid" HeaderText="Eid" ReadOnly="True" 

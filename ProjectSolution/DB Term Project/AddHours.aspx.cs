@@ -12,6 +12,7 @@ namespace DB_Term_Project
     {
         DateTime daySelected = DateTime.MaxValue;
         Double dayHours = 0;
+        int eid = 0;
         String connectionString = "Data Source=(local);Initial Catalog=DBProject;Integrated Security=True";
         //Anthony's Connection// "Data Source=(local);Initial Catalog=DBProject;Integrated Security=True"
         protected void Page_Load(object sender, EventArgs e)
@@ -23,6 +24,11 @@ namespace DB_Term_Project
             if (Session["DayHours"] != null)
             {
                 dayHours = (Double)Session["DayHours"];
+            }
+
+            if (Session["Eid"] != null)
+            {
+                eid = (int)Session["Eid"];
             }
         }
 
@@ -50,19 +56,19 @@ namespace DB_Term_Project
                 SelectDateLabel.Visible = true;                
                 //SelectDateLabel.Text = Convert.ToString(daySelected);
 
-                /*
+                
                 //loop through days, subtract 1 day each time until day is sunday, use this value for weekOF
                 DateTime weekOf = daySelected;
                 while (weekOf.DayOfWeek != DayOfWeek.Sunday) // if not sunday, subtract a day until sunday
                 {
                     //weekOf.Subtract(TimeSpan.FromDays(1)); // subtract a day
-                    weekOf.AddDays(-1);
+                    weekOf = weekOf.AddDays(-1);
                     SelectDateLabel.Text = Convert.ToString(weekOf);
                 }
 
                 weekOf = weekOf.Date;
-                */
-                /*
+                
+                
                 //send to database
                 using( SqlConnection conn = new SqlConnection(connectionString))
                 using (SqlCommand cmd = new SqlCommand())
@@ -71,7 +77,7 @@ namespace DB_Term_Project
                     cmd.CommandText = "AddDailyHours";
                     cmd.CommandType = System.Data.CommandType.StoredProcedure;
                     cmd.Connection = conn;
-                    cmd.Parameters.AddWithValue("@eid", 1);
+                    cmd.Parameters.AddWithValue("@eid", eid);
                     cmd.Parameters.AddWithValue("@day", daySelected);
                     cmd.Parameters.AddWithValue("@hours", dayHours);
                     cmd.Parameters.AddWithValue("@weekStartDate", weekOf);
@@ -79,18 +85,24 @@ namespace DB_Term_Project
                     conn.Open();
                     rowsAffected = cmd.ExecuteNonQuery();
                     conn.Close();
-                }*/
+                }
                 
                 
-                //SelectDateLabel.Text = "Submission Successful";
+                SelectDateLabel.Text = "Submission Successful";
                 //SelectDateLabel.Text = Convert.ToString(weekOf);
                 
                 //reset variables
                 Session["SelectedDate"] = null;
                 Session["DayHours"] = null;
+                Session["Eid"] = null;
+
                 daySelected = DateTime.MaxValue;
                 dayHours = 0;
-                
+                eid = 0;
+
+                Calendar1.SelectedDates.Clear();
+                EidTextBox.Text =EidTextBox.Text.Remove(0);
+                HoursTextBox.Text = HoursTextBox.Text.Remove(0);
             }
         }
 
@@ -101,5 +113,12 @@ namespace DB_Term_Project
 
 
         }
+
+        protected void EidTextBox_TextChanged(object sender, EventArgs e)
+        {
+            Session["Eid"] = Convert.ToInt32(EidTextBox.Text);
+            eid = (int)Session["Eid"];
+        }
+
     }
 }

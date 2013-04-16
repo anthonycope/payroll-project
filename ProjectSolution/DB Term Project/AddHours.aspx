@@ -3,10 +3,16 @@
 
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
 </asp:Content>
-<asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
+<asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent"> 
     <h2>
-        Add Daily Hours</h2>
+        Add Daily HourS</h2>
+<p>
+        Enter Eid&nbsp; // change to use the eid of person logged in automatically</p>
     <p>
+        <asp:TextBox ID="EidTextBox" runat="server" 
+            ontextchanged="EidTextBox_TextChanged"></asp:TextBox>
+    </p>
+<p>
         Select Day
         <asp:Calendar ID="Calendar1" runat="server" 
             onselectionchanged="Calendar1_SelectionChanged"></asp:Calendar>
