@@ -37,11 +37,11 @@
             <SortedDescendingHeaderStyle BackColor="#6F8DAE" />
         </asp:GridView>
         <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
-            ConnectionString="<%$ ConnectionStrings:DBProjectConnectionString1 %>" 
+            ConnectionString="<%$ ConnectionStrings:DBProjectConnectionString %>" 
             DeleteCommand="DELETE FROM [Employees] WHERE [Eid] = @Eid" 
             InsertCommand="INSERT INTO [Employees] ([Eid], [username], [password], [name], [address],
                            [birthdate], [position], [mgrid]) VALUES (@Eid, @username, @password, @name, @address, @birthdate, @position, @mgrid)" 
-            ProviderName="<%$ ConnectionStrings:DBProjectConnectionString1.ProviderName %>" 
+            ProviderName="<%$ ConnectionStrings:DBProjectConnectionString.ProviderName %>" 
             SelectCommand="SELECT [Eid], [username], [password], [name], [address],
                            [birthdate], [position], [mgrid] FROM [Employees] WHERE ([position] = @position)" 
             

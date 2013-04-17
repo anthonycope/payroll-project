@@ -57,6 +57,7 @@
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\Register.aspx" />
     <Content Include="AddHours.aspx" />
+    <Content Include="approveHours.aspx" />
     <Content Include="Search.aspx" />
     <Content Include="Styles\Site.css" />
     <Content Include="Default.aspx" />
@@ -116,6 +117,13 @@
     </Compile>
     <Compile Include="AddHours.aspx.designer.cs">
       <DependentUpon>AddHours.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="approveHours.aspx.cs">
+      <DependentUpon>approveHours.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="approveHours.aspx.designer.cs">
+      <DependentUpon>approveHours.aspx</DependentUpon>
     </Compile>
     <Compile Include="Search.aspx.cs">
       <DependentUpon>Search.aspx</DependentUpon>
