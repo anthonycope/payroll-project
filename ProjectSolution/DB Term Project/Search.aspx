@@ -27,6 +27,7 @@
                 <asp:BoundField DataField="position" HeaderText="position" 
                     SortExpression="position" />
                 <asp:BoundField DataField="mgrid" HeaderText="mgrid" SortExpression="mgrid" />
+                <asp:BoundField DataField="wage" HeaderText="wage" SortExpression="wage" />
             </Columns>
             <EditRowStyle BackColor="#999999" />
             <FooterStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
@@ -41,8 +42,15 @@
         </asp:GridView>
         <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
             ConnectionString="<%$ ConnectionStrings:DBProjectConnectionString2 %>" 
-            SelectCommand="IF @Choice = 0 SELECT Eid, username, firstname, lastname, address, birthdate, position, mgrid FROM Employees AS E WHERE (Eid = @text); ELSE IF @Choice = 1 SELECT Eid, username, firstname, lastname, address, birthdate, position, mgrid FROM Employees AS E WHERE (firstname = @text); ELSE IF @Choice = 2 SELECT Eid, username, firstname, lastname, address, birthdate, position, mgrid FROM Employees AS E WHERE (lastname = @text); ELSE IF @Choice = 3 SELECT Eid, username, firstname, lastname, address, birthdate, position, mgrid FROM Employees AS E WHERE (position = @text); ELSE IF @Choice = 4 SELECT Eid, username, firstname, lastname, address, birthdate, position, mgrid FROM Employees AS E WHERE (birthdate = @text); ELSE IF @Choice = 5 SELECT Eid, username, firstname, lastname, address, birthdate, position, mgrid FROM Employees AS E WHERE (mgrid = @text);
-ELSE IF @Choice = 6 SELECT  Eid, username, firstname, lastname, address, birthdate, position, mgrid FROM Employees AS E WHERE (username = @text);">
+            SelectCommand="IF @Choice = 0 SELECT Eid, username, firstname, lastname, address, birthdate, position, mgrid, wage FROM Employees AS E WHERE (Eid = @text);
+ ELSE IF @Choice = 1 SELECT Eid, username, firstname, lastname, address, birthdate, position, mgrid, wage FROM Employees AS E WHERE (firstname = @text); 
+ELSE IF @Choice = 2 SELECT Eid, username, firstname, lastname, address, birthdate, position, mgrid, wage FROM Employees AS E WHERE (lastname = @text); 
+ELSE IF @Choice = 3 SELECT Eid, username, firstname, lastname, address, birthdate, position, mgrid, wage FROM Employees AS E WHERE (position = @text); 
+ELSE IF @Choice = 4 SELECT Eid, username, firstname, lastname, address, birthdate, position, mgrid, wage FROM Employees AS E WHERE (birthdate = @text); 
+ELSE IF @Choice = 5 SELECT Eid, username, firstname, lastname, address, birthdate, position, mgrid, wage FROM Employees AS E WHERE (mgrid = @text);
+ELSE IF @Choice = 6 SELECT  Eid, username, firstname, lastname, address, birthdate, position, mgrid, wage FROM Employees AS E WHERE (username = @text);
+ELSE IF @Choice = 7 SELECT  Eid, username, firstname, lastname, address, birthdate, position, mgrid, wage FROM Employees AS E WHERE (wage= @text);
+">
             <SelectParameters>
                 <asp:ControlParameter ControlID="DropDownList1" DefaultValue="" Name="CHOICE" 
                     PropertyName="SelectedValue" />
@@ -63,6 +71,7 @@ ELSE IF @Choice = 6 SELECT  Eid, username, firstname, lastname, address, birthda
             <asp:ListItem Value="4">Birthdate</asp:ListItem>
             <asp:ListItem Value="5">MangerID</asp:ListItem>
             <asp:ListItem Value="6">Username</asp:ListItem>
+            <asp:ListItem Value="7">Wage</asp:ListItem>
         </asp:DropDownList>
     </p>
     <p>

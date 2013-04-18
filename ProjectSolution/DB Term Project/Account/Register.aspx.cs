@@ -11,8 +11,8 @@ namespace DB_Term_Project.Account
 {
     public partial class Register : System.Web.UI.Page
     {
-        String connectionString = "Data Source=Henrys-PC;Initial Catalog=DBProject;Integrated Security=True";
-
+        String connectionString = "Data Source=(local);Initial Catalog=DBProject;Integrated Security=True";// "Data Source=Henrys-PC;Initial Catalog=DBProject;Integrated Security=True";
+        //anthonys //"Data Source=(local);Initial Catalog=DBProject;Integrated Security=True"
         protected void Page_Load(object sender, EventArgs e)
         {
             RegisterUser.ContinueDestinationPageUrl = Request.QueryString["ReturnUrl"];
