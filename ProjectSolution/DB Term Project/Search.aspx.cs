@@ -30,6 +30,11 @@ namespace DB_Term_Project
 
         }
 
+        protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
 
     }
 }

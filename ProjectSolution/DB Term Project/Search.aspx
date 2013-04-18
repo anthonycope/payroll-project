@@ -14,14 +14,16 @@
             <Columns>
                 <asp:BoundField DataField="Eid" HeaderText="Eid" ReadOnly="True" 
                     SortExpression="Eid" />
+                <asp:BoundField DataField="username" HeaderText="username" 
+                    SortExpression="username" />
                 <asp:BoundField DataField="firstname" HeaderText="firstname" 
                     SortExpression="firstname" />
                 <asp:BoundField DataField="lastname" HeaderText="lastname" 
                     SortExpression="lastname" />
                 <asp:BoundField DataField="address" HeaderText="address" 
                     SortExpression="address" />
-                <asp:BoundField DataField="birthdate" DataFormatString="{0:d}" 
-                    HeaderText="birthdate" SortExpression="birthdate" />
+                <asp:BoundField DataField="birthdate" HeaderText="birthdate" 
+                    SortExpression="birthdate" />
                 <asp:BoundField DataField="position" HeaderText="position" 
                     SortExpression="position" />
                 <asp:BoundField DataField="mgrid" HeaderText="mgrid" SortExpression="mgrid" />
@@ -39,7 +41,8 @@
         </asp:GridView>
         <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
             ConnectionString="<%$ ConnectionStrings:DBProjectConnectionString2 %>" 
-            SelectCommand="IF @Choice = 0 SELECT Eid, firstname, lastname, address, birthdate, position, mgrid FROM Employees AS E WHERE (Eid = @text); ELSE IF @Choice = 1 SELECT Eid, firstname, lastname, address, birthdate, position, mgrid FROM Employees AS E WHERE (firstname = @text); ELSE IF @Choice = 2 SELECT Eid, firstname, lastname, address, birthdate, position, mgrid FROM Employees AS E WHERE (lastname = @text); ELSE IF @Choice = 3 SELECT Eid, firstname, lastname, address, birthdate, position, mgrid FROM Employees AS E WHERE (position = @text); ELSE IF @Choice = 4 SELECT Eid, firstname, lastname, address, birthdate, position, mgrid FROM Employees AS E WHERE (birthdate = @text); ELSE IF @Choice = 5 SELECT Eid, firstname, lastname, address, birthdate, position, mgrid FROM Employees AS E WHERE (mgrid = @text);">
+            SelectCommand="IF @Choice = 0 SELECT Eid, username, firstname, lastname, address, birthdate, position, mgrid FROM Employees AS E WHERE (Eid = @text); ELSE IF @Choice = 1 SELECT Eid, username, firstname, lastname, address, birthdate, position, mgrid FROM Employees AS E WHERE (firstname = @text); ELSE IF @Choice = 2 SELECT Eid, username, firstname, lastname, address, birthdate, position, mgrid FROM Employees AS E WHERE (lastname = @text); ELSE IF @Choice = 3 SELECT Eid, username, firstname, lastname, address, birthdate, position, mgrid FROM Employees AS E WHERE (position = @text); ELSE IF @Choice = 4 SELECT Eid, username, firstname, lastname, address, birthdate, position, mgrid FROM Employees AS E WHERE (birthdate = @text); ELSE IF @Choice = 5 SELECT Eid, username, firstname, lastname, address, birthdate, position, mgrid FROM Employees AS E WHERE (mgrid = @text);
+ELSE IF @Choice = 6 SELECT  Eid, username, firstname, lastname, address, birthdate, position, mgrid FROM Employees AS E WHERE (username = @text);">
             <SelectParameters>
                 <asp:ControlParameter ControlID="DropDownList1" DefaultValue="" Name="CHOICE" 
                     PropertyName="SelectedValue" />
@@ -51,13 +54,15 @@
     <p>
         &nbsp;</p>
     <p>
-        <asp:DropDownList ID="DropDownList1" runat="server" Height="30px" Width="154px">
+        <asp:DropDownList ID="DropDownList1" runat="server" Height="30px" 
+            onselectedindexchanged="DropDownList1_SelectedIndexChanged" Width="154px">
             <asp:ListItem Value="0">Eid</asp:ListItem>
             <asp:ListItem Value="1">FirstName</asp:ListItem>
             <asp:ListItem Value="2">LastName</asp:ListItem>
             <asp:ListItem Value="3">Position</asp:ListItem>
             <asp:ListItem Value="4">Birthdate</asp:ListItem>
             <asp:ListItem Value="5">MangerID</asp:ListItem>
+            <asp:ListItem Value="6">Username</asp:ListItem>
         </asp:DropDownList>
     </p>
     <p>
