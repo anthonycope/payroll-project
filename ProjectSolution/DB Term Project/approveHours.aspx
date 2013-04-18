@@ -8,27 +8,22 @@
         onselectedindexchanged="DropDownList1_SelectedIndexChanged">
     </asp:DropDownList>
     <asp:SqlDataSource ID="SqlDataSource2" runat="server" 
-        ConnectionString="<%$ ConnectionStrings:DBProjectConnectionString %>" 
+        ConnectionString="<%$ ConnectionStrings:DBProjectConnectionString2 %>" 
         SelectCommand="SELECT DISTINCT [mgrid] FROM [Employees]">
     </asp:SqlDataSource>
     <asp:GridView ID="WeekHourGridView" runat="server" AllowPaging="True" 
-        AllowSorting="True" AutoGenerateColumns="False" DataKeyNames="Eid,weekOf" 
-        DataSourceID="SqlDataSource1" 
+        AllowSorting="True" AutoGenerateColumns="False" 
+        DataSourceID="SqlDataSource2" 
         onselectedindexchanged="WeekHourGridView_SelectedIndexChanged">
         <Columns>
-            <asp:CommandField ShowSelectButton="True" SelectText="Approve" />
-            <asp:BoundField DataField="Eid" HeaderText="Eid" ReadOnly="True" 
-                SortExpression="Eid" />
-            <asp:BoundField DataField="weekOf" HeaderText="weekOf" ReadOnly="True" 
-                SortExpression="weekOf" />
-            <asp:BoundField DataField="Hours_Worked" HeaderText="Hours_Worked" 
-                SortExpression="Hours_Worked" />
+            <asp:BoundField DataField="mgrid" HeaderText="mgrid" SortExpression="mgrid" />
         </Columns>
     </asp:GridView>
     <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
-        ConnectionString="<%$ ConnectionStrings:DBProjectConnectionString %>" 
+        ConnectionString="<%$ ConnectionStrings:DBProjectConnectionString2 %>" 
         
-        SelectCommand="SELECT w.Eid, w.weekOf, w.Hours_Worked FROM Weekly_Hours AS w INNER JOIN Employees AS e ON w.Eid = e.Eid AND e.Mgrid = 1">
+        
+    SelectCommand="SELECT w.Eid, w.weekOf, w.Hours_Worked FROM Weekly_Hours AS w INNER JOIN Employees AS e ON w.Eid = e.Eid AND e.Mgrid = 1">
     </asp:SqlDataSource>
     <asp:Literal ID="Literal1" runat="server"></asp:Literal>
     <br />

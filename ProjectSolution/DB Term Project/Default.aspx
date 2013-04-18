@@ -16,11 +16,18 @@
             <Columns>
                 <asp:BoundField DataField="Eid" HeaderText="Eid" ReadOnly="True" 
                     SortExpression="Eid" />
-                <asp:BoundField DataField="name" HeaderText="name" SortExpression="name" />
+                <asp:BoundField DataField="username" HeaderText="username" 
+                    SortExpression="username" />
+                <asp:BoundField DataField="password" HeaderText="password" 
+                    SortExpression="password" />
+                <asp:BoundField DataField="firstname" 
+                    HeaderText="firstname" SortExpression="firstname" />
+                <asp:BoundField DataField="lastname" HeaderText="lastname" 
+                    SortExpression="lastname" />
                 <asp:BoundField DataField="address" HeaderText="address" 
                     SortExpression="address" />
-                <asp:BoundField DataField="birthdate" DataFormatString="{0:d}" 
-                    HeaderText="birthdate" SortExpression="birthdate" />
+                <asp:BoundField DataField="birthdate" HeaderText="birthdate" 
+                    SortExpression="birthdate" />
                 <asp:BoundField DataField="position" HeaderText="position" 
                     SortExpression="position" />
                 <asp:BoundField DataField="mgrid" HeaderText="mgrid" SortExpression="mgrid" />
@@ -37,13 +44,14 @@
             <SortedDescendingHeaderStyle BackColor="#6F8DAE" />
         </asp:GridView>
         <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
-            ConnectionString="<%$ ConnectionStrings:DBProjectConnectionString %>" 
+            ConnectionString="<%$ ConnectionStrings:DBProjectConnectionString2 %>" 
             DeleteCommand="DELETE FROM [Employees] WHERE [Eid] = @Eid" 
             InsertCommand="INSERT INTO [Employees] ([Eid], [username], [password], [name], [address],
                            [birthdate], [position], [mgrid]) VALUES (@Eid, @username, @password, @name, @address, @birthdate, @position, @mgrid)" 
             ProviderName="<%$ ConnectionStrings:DBProjectConnectionString.ProviderName %>" 
-            SelectCommand="SELECT [Eid], [username], [password], [name], [address],
+            SelectCommand="SELECT [Eid], [username], [password], [firstname], [lastname], [address],
                            [birthdate], [position], [mgrid] FROM [Employees] WHERE ([position] = @position)" 
+            
             
             UpdateCommand="UPDATE [Employees] SET [username] = @username, [password] = @password,
              [name] = @name, [address] = @address, [birthdate] = @birthdate, [position] = @position, [mgrid] = @mgrid WHERE [Eid] = @Eid">

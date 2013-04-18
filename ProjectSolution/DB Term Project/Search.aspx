@@ -6,25 +6,25 @@
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
     <h2>
         Search
-    </h2>
-    <p>
-        <asp:GridView ID="GridView1" runat="server" 
-            DataKeyNames="Eid" DataSourceID="SqlDataSource1" CellPadding="4" 
-            ForeColor="#333333" GridLines="None" Width="689px">
+        <asp:GridView ID="GridView1" runat="server" AllowSorting="True" 
+            AutoGenerateColumns="False" CellPadding="4" DataKeyNames="Eid" 
+            DataMember="DefaultView" DataSourceID="SqlDataSource1" ForeColor="#333333" 
+            GridLines="None" ShowHeaderWhenEmpty="True">
             <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
             <Columns>
                 <asp:BoundField DataField="Eid" HeaderText="Eid" ReadOnly="True" 
                     SortExpression="Eid" />
-                <asp:BoundField DataField="name" HeaderText="name" 
-                    SortExpression="name" />
+                <asp:BoundField DataField="firstname" HeaderText="firstname" 
+                    SortExpression="firstname" />
+                <asp:BoundField DataField="lastname" HeaderText="lastname" 
+                    SortExpression="lastname" />
                 <asp:BoundField DataField="address" HeaderText="address" 
                     SortExpression="address" />
-                <asp:BoundField DataField="birthdate" HeaderText="birthdate" 
-                    SortExpression="birthdate" />
+                <asp:BoundField DataField="birthdate" DataFormatString="{0:d}" 
+                    HeaderText="birthdate" SortExpression="birthdate" />
                 <asp:BoundField DataField="position" HeaderText="position" 
                     SortExpression="position" />
-                <asp:BoundField DataField="mgrid" 
-                    HeaderText="mgrid" SortExpression="mgrid" />
+                <asp:BoundField DataField="mgrid" HeaderText="mgrid" SortExpression="mgrid" />
             </Columns>
             <EditRowStyle BackColor="#999999" />
             <FooterStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
@@ -38,26 +38,27 @@
             <SortedDescendingHeaderStyle BackColor="#6F8DAE" />
         </asp:GridView>
         <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
-            ConnectionString="<%$ ConnectionStrings:DBProjectConnectionString %>" 
-            
-            SelectCommand="Search" SelectCommandType="StoredProcedure">
+            ConnectionString="<%$ ConnectionStrings:DBProjectConnectionString2 %>" 
+            SelectCommand="IF @Choice = 0 SELECT Eid, firstname, lastname, address, birthdate, position, mgrid FROM Employees AS E WHERE (Eid = @text); ELSE IF @Choice = 1 SELECT Eid, firstname, lastname, address, birthdate, position, mgrid FROM Employees AS E WHERE (firstname = @text); ELSE IF @Choice = 2 SELECT Eid, firstname, lastname, address, birthdate, position, mgrid FROM Employees AS E WHERE (lastname = @text); ELSE IF @Choice = 3 SELECT Eid, firstname, lastname, address, birthdate, position, mgrid FROM Employees AS E WHERE (position = @text); ELSE IF @Choice = 4 SELECT Eid, firstname, lastname, address, birthdate, position, mgrid FROM Employees AS E WHERE (birthdate = @text); ELSE IF @Choice = 5 SELECT Eid, firstname, lastname, address, birthdate, position, mgrid FROM Employees AS E WHERE (mgrid = @text);">
             <SelectParameters>
-                <asp:Parameter DefaultValue="1" Name="eid" Type="Int32" />
-                <asp:Parameter DbType="Date" Name="birthdate" />
-                <asp:Parameter Name="hours" Type="Single" />
-                <asp:Parameter Name="position" Type="String" />
+                <asp:ControlParameter ControlID="DropDownList1" DefaultValue="" Name="CHOICE" 
+                    PropertyName="SelectedValue" />
+                <asp:ControlParameter ControlID="SearchTextBox" DefaultValue="" Name="text" 
+                    PropertyName="Text" />
             </SelectParameters>
         </asp:SqlDataSource>
-    </p>
+    </h2>
     <p>
-        <asp:ListBox ID="ListBox1" runat="server" AutoPostBack="True" Height="20px" 
-            Width="147px">
-            <asp:ListItem>Eid</asp:ListItem>
-            <asp:ListItem>Name</asp:ListItem>
-            <asp:ListItem>Position</asp:ListItem>
-            <asp:ListItem>Birthdate</asp:ListItem>
-            <asp:ListItem>ManagerID</asp:ListItem>
-        </asp:ListBox>
+        &nbsp;</p>
+    <p>
+        <asp:DropDownList ID="DropDownList1" runat="server" Height="30px" Width="154px">
+            <asp:ListItem Value="0">Eid</asp:ListItem>
+            <asp:ListItem Value="1">FirstName</asp:ListItem>
+            <asp:ListItem Value="2">LastName</asp:ListItem>
+            <asp:ListItem Value="3">Position</asp:ListItem>
+            <asp:ListItem Value="4">Birthdate</asp:ListItem>
+            <asp:ListItem Value="5">MangerID</asp:ListItem>
+        </asp:DropDownList>
     </p>
     <p>
         Search Text</p>
