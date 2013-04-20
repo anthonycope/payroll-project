@@ -11,8 +11,8 @@ namespace DB_Term_Project
     public partial class AddHours: System.Web.UI.Page
     {
         DateTime daySelected = DateTime.MaxValue;
-        Double dayHours = 0;
-        int eid = 0;
+        Double dayHours;
+        int eid;
         String connectionString = "Data Source=(local);Initial Catalog=DBProject;Integrated Security=True"; //"Data Source=(local)\\SQLEXPRESS;Initial Catalog=DBProject;Integrated Security=True";
         //Anthony's Connection// "Data Source=(local);Initial Catalog=DBProject;Integrated Security=True"
         protected void Page_Load(object sender, EventArgs e)
@@ -34,8 +34,19 @@ namespace DB_Term_Project
 
         protected void HoursTextBox_TextChanged(object sender, EventArgs e)
         {
-            Session["DayHours"] = Convert.ToDouble(HoursTextBox.Text);
-            dayHours = (Double)Session["DayHours"];
+            Double temp;
+            bool valid = Double.TryParse(HoursTextBox.Text, out temp);
+            if (valid)
+            {
+                Session["DayHours"] = temp;
+                dayHours = (Double)Session["DayHours"];
+                InvalidInput1.Visible = false;
+            }
+            else
+            {
+                InvalidInput1.Visible = true;
+                SelectDateLabel.Text = "";
+            }
         }
 
         protected void Button1_Click(object sender, EventArgs e)
@@ -46,17 +57,23 @@ namespace DB_Term_Project
                 //SelectDateLabel.Text = Convert.ToString(daySelected);
                 SelectDateLabel.Text = "Please select a date";
             }
-            else if (dayHours <= 0)
+
+            else if (dayHours <= 0 && !InvalidInput1.Visible)
             {
                 SelectDateLabel.Visible = true;
                 SelectDateLabel.Text = "Please enter the number of hours";
             }
+            else if (InvalidInput1.Visible)
+            {
+                // don't execute query
+            }
+
             else
             {
-                SelectDateLabel.Visible = true;                
+                SelectDateLabel.Visible = true;
                 //SelectDateLabel.Text = Convert.ToString(daySelected);
 
-                
+
                 //loop through days, subtract 1 day each time until day is sunday, use this value for weekOF
                 DateTime weekOf = daySelected;
                 while (weekOf.DayOfWeek != DayOfWeek.Sunday) // if not sunday, subtract a day until sunday
@@ -67,10 +84,10 @@ namespace DB_Term_Project
                 }
 
                 weekOf = weekOf.Date;
-                
-                
+
+
                 //send to database
-                using( SqlConnection conn = new SqlConnection(connectionString))
+                using (SqlConnection conn = new SqlConnection(connectionString))
                 using (SqlCommand cmd = new SqlCommand())
                 {
                     Int32 rowsAffected;
@@ -86,11 +103,11 @@ namespace DB_Term_Project
                     rowsAffected = cmd.ExecuteNonQuery();
                     conn.Close();
                 }
-                
-                
+
+
                 SelectDateLabel.Text = "Submission Successful";
                 //SelectDateLabel.Text = Convert.ToString(weekOf);
-                
+
                 //reset variables
                 Session["SelectedDate"] = null;
                 Session["DayHours"] = null;
@@ -101,7 +118,7 @@ namespace DB_Term_Project
                 eid = 0;
 
                 Calendar1.SelectedDates.Clear();
-                EidTextBox.Text =EidTextBox.Text.Remove(0);
+                EidTextBox.Text = EidTextBox.Text.Remove(0);
                 HoursTextBox.Text = HoursTextBox.Text.Remove(0);
             }
         }
@@ -118,6 +135,16 @@ namespace DB_Term_Project
         {
             Session["Eid"] = Convert.ToInt32(EidTextBox.Text);
             eid = (int)Session["Eid"];
+        }
+
+        protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void FormView1_PageIndexChanging(object sender, FormViewPageEventArgs e)
+        {
+
         }
 
     }
