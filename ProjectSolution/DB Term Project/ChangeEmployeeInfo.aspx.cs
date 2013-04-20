@@ -18,5 +18,10 @@ namespace DB_Term_Project
       {
 
       }
+
+      protected void SubmitChangesButton_Clicked(object sender, EventArgs e)
+      {
+
+      }
    }
 }
