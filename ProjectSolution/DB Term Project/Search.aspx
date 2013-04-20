@@ -6,29 +6,10 @@
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
     <h2>
         Search
-        <asp:GridView ID="GridView1" runat="server" AllowSorting="True" 
-            AutoGenerateColumns="False" CellPadding="4" DataKeyNames="Eid" 
-            DataMember="DefaultView" DataSourceID="SqlDataSource1" ForeColor="#333333" 
-            GridLines="None" ShowHeaderWhenEmpty="True">
+        <asp:GridView ID="GridView1" runat="server" AllowSorting="True" CellPadding="4" 
+            DataMember="DefaultView" ForeColor="#333333" 
+            GridLines="None" ShowHeaderWhenEmpty="True" AutoGenerateColumns="False">
             <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
-            <Columns>
-                <asp:BoundField DataField="Eid" HeaderText="Eid" ReadOnly="True" 
-                    SortExpression="Eid" />
-                <asp:BoundField DataField="username" HeaderText="username" 
-                    SortExpression="username" />
-                <asp:BoundField DataField="firstname" HeaderText="firstname" 
-                    SortExpression="firstname" />
-                <asp:BoundField DataField="lastname" HeaderText="lastname" 
-                    SortExpression="lastname" />
-                <asp:BoundField DataField="address" HeaderText="address" 
-                    SortExpression="address" />
-                <asp:BoundField DataField="birthdate" HeaderText="birthdate" 
-                    SortExpression="birthdate" />
-                <asp:BoundField DataField="position" HeaderText="position" 
-                    SortExpression="position" />
-                <asp:BoundField DataField="mgrid" HeaderText="mgrid" SortExpression="mgrid" />
-                <asp:BoundField DataField="wage" HeaderText="wage" SortExpression="wage" />
-            </Columns>
             <EditRowStyle BackColor="#999999" />
             <FooterStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
             <HeaderStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
@@ -39,25 +20,19 @@
             <SortedAscendingHeaderStyle BackColor="#506C8C" />
             <SortedDescendingCellStyle BackColor="#FFFDF8" />
             <SortedDescendingHeaderStyle BackColor="#6F8DAE" />
+            <Columns>
+            <asp:BoundField DataField="Eid" HtmlEncode="False" HeaderText="Eid" ReadOnly="True" />
+            <asp:BoundField DataField="Username" HtmlEncode="False" HeaderText="Username" ReadOnly="True" />
+            <asp:BoundField DataField="Firstname" HtmlEncode="False" HeaderText="Firstname" ReadOnly="True" />
+            <asp:BoundField DataField="Lastname" HtmlEncode="False" HeaderText="Lastname" ReadOnly="True" />
+            <asp:BoundField DataField="Address" HtmlEncode="False" HeaderText="Address" ReadOnly="True" />
+            <asp:BoundField DataField="Birthdate" HtmlEncode="False" DataFormatString = "{0:d}" HeaderText="Birthdate" ReadOnly="True" />
+            <asp:BoundField DataField="Position" HtmlEncode="False" HeaderText="Position" ReadOnly="True" />
+            <asp:BoundField DataField="Mgrid" HtmlEncode="False" HeaderText="Mgrid" ReadOnly="True" />
+            <asp:BoundField DataField="Wage" HtmlEncode="False" DataFormatString = "{0:c}" HeaderText="Wage" ReadOnly="True" />
+            </Columns>            
         </asp:GridView>
-        <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
-            ConnectionString="<%$ ConnectionStrings:DBProjectConnectionString2 %>" 
-            SelectCommand="IF @Choice = 0 SELECT Eid, username, firstname, lastname, address, birthdate, position, mgrid, wage FROM Employees AS E WHERE (Eid = @text);
- ELSE IF @Choice = 1 SELECT Eid, username, firstname, lastname, address, birthdate, position, mgrid, wage FROM Employees AS E WHERE (firstname = @text); 
-ELSE IF @Choice = 2 SELECT Eid, username, firstname, lastname, address, birthdate, position, mgrid, wage FROM Employees AS E WHERE (lastname = @text); 
-ELSE IF @Choice = 3 SELECT Eid, username, firstname, lastname, address, birthdate, position, mgrid, wage FROM Employees AS E WHERE (position = @text); 
-ELSE IF @Choice = 4 SELECT Eid, username, firstname, lastname, address, birthdate, position, mgrid, wage FROM Employees AS E WHERE (birthdate = @text); 
-ELSE IF @Choice = 5 SELECT Eid, username, firstname, lastname, address, birthdate, position, mgrid, wage FROM Employees AS E WHERE (mgrid = @text);
-ELSE IF @Choice = 6 SELECT  Eid, username, firstname, lastname, address, birthdate, position, mgrid, wage FROM Employees AS E WHERE (username = @text);
-ELSE IF @Choice = 7 SELECT  Eid, username, firstname, lastname, address, birthdate, position, mgrid, wage FROM Employees AS E WHERE (wage= @text);
-">
-            <SelectParameters>
-                <asp:ControlParameter ControlID="DropDownList1" DefaultValue="" Name="CHOICE" 
-                    PropertyName="SelectedValue" />
-                <asp:ControlParameter ControlID="SearchTextBox" DefaultValue="" Name="text" 
-                    PropertyName="Text" />
-            </SelectParameters>
-        </asp:SqlDataSource>
+
     </h2>
     <p>
         &nbsp;</p>
@@ -69,7 +44,7 @@ ELSE IF @Choice = 7 SELECT  Eid, username, firstname, lastname, address, birthda
             <asp:ListItem Value="2">LastName</asp:ListItem>
             <asp:ListItem Value="3">Position</asp:ListItem>
             <asp:ListItem Value="4">Birthdate</asp:ListItem>
-            <asp:ListItem Value="5">MangerID</asp:ListItem>
+            <asp:ListItem Value="5">ManagerID</asp:ListItem>
             <asp:ListItem Value="6">Username</asp:ListItem>
             <asp:ListItem Value="7">Wage</asp:ListItem>
         </asp:DropDownList>
@@ -82,5 +57,9 @@ ELSE IF @Choice = 7 SELECT  Eid, username, firstname, lastname, address, birthda
 &nbsp;&nbsp;&nbsp;
         <asp:Button ID="SearchButton" runat="server" onclick="SearchButton_Click" 
             Text="Search" />
+    &nbsp;
+        <asp:Literal ID="InvalidInput" runat="server" 
+            Text="<span style='color:red;'>Invalid Input. Please try again.</span>" 
+            Visible="False"></asp:Literal>
     </p>
 </asp:Content>
