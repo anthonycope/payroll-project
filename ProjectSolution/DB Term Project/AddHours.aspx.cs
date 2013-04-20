@@ -137,5 +137,15 @@ namespace DB_Term_Project
             eid = (int)Session["Eid"];
         }
 
+        protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void FormView1_PageIndexChanging(object sender, FormViewPageEventArgs e)
+        {
+
+        }
+
     }
 }
