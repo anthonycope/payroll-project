@@ -59,6 +59,7 @@
     <Content Include="AddHours.aspx" />
     <Content Include="approveHours.aspx" />
     <Content Include="ChangeEmployeeInfo.aspx" />
+    <Content Include="ViewHours.aspx" />
     <Content Include="RequestApproval.aspx" />
     <Content Include="Search.aspx" />
     <Content Include="Styles\Site.css" />
@@ -133,6 +134,13 @@
     </Compile>
     <Compile Include="ChangeEmployeeInfo.aspx.designer.cs">
       <DependentUpon>ChangeEmployeeInfo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ViewHours.aspx.cs">
+      <DependentUpon>ViewHours.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ViewHours.aspx.designer.cs">
+      <DependentUpon>ViewHours.aspx</DependentUpon>
     </Compile>
     <Compile Include="RequestApproval.aspx.cs">
       <DependentUpon>RequestApproval.aspx</DependentUpon>

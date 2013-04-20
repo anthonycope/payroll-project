@@ -18,36 +18,15 @@
             onselectionchanged="Calendar1_SelectionChanged"></asp:Calendar>
     </p>
     <p>
-        <asp:FormView ID="FormView1" runat="server" DataSourceID="SqlDataSource1" 
-            onpageindexchanging="FormView1_PageIndexChanging">
-            <EditItemTemplate>
-                Hours_Worked:
-                <asp:TextBox ID="Hours_WorkedTextBox" runat="server" 
-                    Text='<%# Bind("Hours_Worked") %>' />
-                <br />
-                <asp:LinkButton ID="UpdateButton" runat="server" CausesValidation="True" 
-                    CommandName="Update" Text="Update" />
-                &nbsp;<asp:LinkButton ID="UpdateCancelButton" runat="server" 
-                    CausesValidation="False" CommandName="Cancel" Text="Cancel" />
-            </EditItemTemplate>
-            <InsertItemTemplate>
-                Hours_Worked:
-                <asp:TextBox ID="Hours_WorkedTextBox" runat="server" 
-                    Text='<%# Bind("Hours_Worked") %>' />
-                <br />
-                <asp:LinkButton ID="InsertButton" runat="server" CausesValidation="True" 
-                    CommandName="Insert" Text="Insert" />
-                &nbsp;<asp:LinkButton ID="InsertCancelButton" runat="server" 
-                    CausesValidation="False" CommandName="Cancel" Text="Cancel" />
-            </InsertItemTemplate>
-            <ItemTemplate>
-                Hours_Worked:
-                <asp:Label ID="Hours_WorkedLabel" runat="server" 
-                    Text='<%# Bind("Hours_Worked") %>' />
-                <br />
-
-            </ItemTemplate>
-        </asp:FormView>
+        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" 
+            DataSourceID="SqlDataSource1" 
+            onselectedindexchanged="GridView1_SelectedIndexChanged" 
+            ShowHeaderWhenEmpty="True">
+            <Columns>
+                <asp:BoundField DataField="Hours_Worked" HeaderText="Hours_Worked" 
+                    SortExpression="Hours_Worked" />
+            </Columns>
+        </asp:GridView>
         <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
             ConnectionString="<%$ ConnectionStrings:DBProjectConnectionString2 %>" 
             SelectCommand="SELECT [Hours_Worked] FROM [Daily_Hours] WHERE (([Day_Of] = @Day_Of) AND ([Eid] = @Eid))">
