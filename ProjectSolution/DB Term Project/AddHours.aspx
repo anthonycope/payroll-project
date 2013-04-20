@@ -11,7 +11,7 @@
     <p>
         <asp:TextBox ID="EidTextBox" runat="server" 
             ontextchanged="EidTextBox_TextChanged"></asp:TextBox>
-    </p>
+    &nbsp;</p>
 <p>
         Select Day
         <asp:Calendar ID="Calendar1" runat="server" 
@@ -20,6 +20,9 @@
     Enter number of hours worked<br />
     <asp:TextBox ID="HoursTextBox" runat="server" 
         ontextchanged="HoursTextBox_TextChanged"></asp:TextBox>
+    <asp:Literal ID="InvalidInput1" runat="server" 
+            Text="<span style='color:red;'>Invalid Hours</span>" 
+            Visible="False"></asp:Literal>
     <br />
     <br />
     <asp:Button ID="SubmitHoursButton" runat="server" onclick="Button1_Click" Text="Submit Hours" />
