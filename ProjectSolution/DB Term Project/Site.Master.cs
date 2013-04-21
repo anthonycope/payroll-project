@@ -31,6 +31,11 @@ namespace DB_Term_Project
 
         protected void Page_Load(object sender, EventArgs e)
         {
+           if (Account.Login.IsLoggedIn)
+              LoginLink.Text = "[Log Out]";
+           else
+              LoginLink.Text = "[Log In]";
+
             MenuItem_createUserItem.NavigateUrl = "~/Account/Register.aspx";
             MenuItem_myPayHistory.NavigateUrl = "~/Default.aspx";
             MenuItem_payrollItem.NavigateUrl = "~/Default.aspx";
@@ -59,6 +64,23 @@ namespace DB_Term_Project
             if (Account.Login.IsAdmin)
                 NavigationMenu.Items.AddAt(payrollIndex, MenuItem_payrollItem); //Add the "View Payroll" link
     
+        }
+
+        protected void LoginLink_Click(object sender, EventArgs e)
+        {
+           //If user is already logged in, redirect him to the home page upon logout.
+           if (Account.Login.IsLoggedIn)
+           {
+              //Set the loggedIn and admin values to false so next time the page loads, the
+              //admin and user options will be gone
+              Account.Login.IsLoggedIn = false;
+              Account.Login.IsAdmin = false;
+              Response.Redirect("/Default.aspx");
+           }
+           else
+           {
+              Response.Redirect("/Account/Login.aspx");
+           }
         }
     }
 }
