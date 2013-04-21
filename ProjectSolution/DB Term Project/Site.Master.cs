@@ -16,17 +16,30 @@ namespace DB_Term_Project
     {
         //Keeps track of the items on the navigation bar; they're listed in the order in which
         // they appear in the navigation bar. This makes it easier to reference those items by index later.
-        private enum items { home, about };
+        private enum items { home, viewHours, approvalRequest, /*myPay,*/ createUser, /*payRoll,*/ addHours, modifyInfo, approveHours, search, about };
 
         //Menu item IDs
         static string createUserID = "New User"; //ID for MenuItem_createUserItem object
         static string payrollID = "Payroll"; //ID for MenuItem_payrollItem object
         static string payHistoryID = "Pay History"; //ID for MenuItem_myPayHistory object
+        static string addHoursID = "Add Hours";
+        static string approveHoursID = "Approve Hours";
+        static string modifyInfoID = "Modify Info";
+        static string approvalRequestID = "Approval Request";
+        static string searchID = "Search";
+        static string viewHoursID = "View Hours";
 
-        //Items (options) to be added to navigation bar at run-time based on the type of user that is logged in.
+
+        /*Items (options) to be added to navigation bar at run-time based on the type of user that is logged in.*/
         private MenuItem MenuItem_createUserItem = new MenuItem ("Create New User", createUserID);
         private MenuItem MenuItem_payrollItem = new MenuItem("View Payroll", payrollID);
         private MenuItem MenuItem_myPayHistory = new MenuItem("View My Pay History", payHistoryID);
+        private MenuItem MenuItem_addHours = new MenuItem(addHoursID, addHoursID);
+        private MenuItem MenuItem_approveHours = new MenuItem(approveHoursID, approveHoursID);
+        private MenuItem MenuItem_modifyInfo = new MenuItem(modifyInfoID, modifyInfoID);
+        private MenuItem MenuItem_approvalRequest = new MenuItem (approvalRequestID, approvalRequestID);
+        private MenuItem MenuItem_search = new MenuItem(searchID, searchID);
+        private MenuItem MenuItem_viewHours = new MenuItem(viewHoursID, viewHoursID);
 
 
         protected void Page_Load(object sender, EventArgs e)
@@ -39,6 +52,14 @@ namespace DB_Term_Project
             MenuItem_createUserItem.NavigateUrl = "~/Account/Register.aspx";
             MenuItem_myPayHistory.NavigateUrl = "~/Default.aspx";
             MenuItem_payrollItem.NavigateUrl = "~/Default.aspx";
+            MenuItem_approveHours.NavigateUrl = "~/approveHours.aspx";
+            MenuItem_addHours.NavigateUrl = "~/AddHours.aspx";
+            MenuItem_modifyInfo.NavigateUrl = "~/ChangeEmployeeInfo.aspx";
+            MenuItem_approvalRequest.NavigateUrl = "~/RequestApproval.aspx";
+            MenuItem_search.NavigateUrl = "~/Search.aspx";
+            MenuItem_addHours.NavigateUrl = "~/AddHours.aspx";
+            MenuItem_viewHours.NavigateUrl = "~/ViewHours.aspx";
+
             updateUserOptions(); //Shows appropriate options based on the user's login privileges
         }
 
@@ -47,22 +68,26 @@ namespace DB_Term_Project
         /// </summary>
         private void updateUserOptions()
         {
-            int myPayIndex = (int)items.home + 1; //Add the "View My Pay History" to the right of "Home"
-            int createUserIndex = myPayIndex + 1; //Add the "Create User" to the right of "View My Pay History"
-            int payrollIndex = createUserIndex + 1; //Add the "Create User" to the right of "Create User"
 
-            /*Add "View My Pay History" option for any user*/
+            /*Add options for any user*/
             if (Account.Login.IsLoggedIn)
-                    NavigationMenu.Items.AddAt(myPayIndex, MenuItem_myPayHistory); //Add the "Create New User" link
+            {
+                //NavigationMenu.Items.AddAt((int)items.myPay, MenuItem_myPayHistory);
+                NavigationMenu.Items.AddAt((int)items.viewHours, MenuItem_viewHours);
+                NavigationMenu.Items.AddAt((int)items.approvalRequest, MenuItem_approvalRequest);
+            }
 
 
-            /*Add  "Create New User" option for admin*/
+            /*Add menu options for admin*/
             if (Account.Login.IsAdmin)
-                    NavigationMenu.Items.AddAt(createUserIndex, MenuItem_createUserItem); //Add the "Create New User" link         
-
-            /*Add "View Payroll" option for admin*/
-            if (Account.Login.IsAdmin)
-                NavigationMenu.Items.AddAt(payrollIndex, MenuItem_payrollItem); //Add the "View Payroll" link
+            {
+                NavigationMenu.Items.AddAt( (int)items.createUser, MenuItem_createUserItem);
+                //NavigationMenu.Items.AddAt((int)items.payRoll, MenuItem_payrollItem); 
+                NavigationMenu.Items.AddAt((int)items.addHours, MenuItem_addHours); 
+                NavigationMenu.Items.AddAt((int)items.modifyInfo, MenuItem_modifyInfo);
+                NavigationMenu.Items.AddAt((int)items.approveHours, MenuItem_approveHours);
+                NavigationMenu.Items.AddAt((int)items.search, MenuItem_search);
+            }
     
         }
 
