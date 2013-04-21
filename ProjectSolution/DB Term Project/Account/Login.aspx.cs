@@ -67,8 +67,7 @@ namespace DB_Term_Project.Account
                  catch
                  {
                     connection.Close();
-                    Page.RegisterClientScriptBlock("mes", "<script language='javascript'>alert('Sorry, an error occurred')</script>");
-                    Response.Redirect("/Default.aspx");
+                    Page.RegisterClientScriptBlock("mes", "<script language='javascript'>alert('Sorry, an error occurred. Are you connected to the database?')</script>");
                     return;
                  }
 
