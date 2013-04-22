@@ -43,7 +43,7 @@ namespace DB_Term_Project.Account
 
                  command.CommandText = "SELECT *" +
                                        " FROM Employees" +
-                                       " WHERE username = @username AND password = @password";
+                                       " WHERE upper(username) = upper(@username) AND password = @password";
                  command.Parameters.AddWithValue("@username", LoginUser.UserName);
                  command.Parameters.AddWithValue("@password", LoginUser.Password);
                  command.Connection = connection;
