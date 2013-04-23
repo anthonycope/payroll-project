@@ -13,13 +13,13 @@ namespace DB_Term_Project {
     public partial class ChangeEmployeeInfo {
         
         /// <summary>
-        /// EmployeeIDChangeTextBox control.
+        /// EmployeeIDTextBox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox EmployeeIDChangeTextBox;
+        protected global::System.Web.UI.WebControls.TextBox EmployeeIDTextBox;
         
         /// <summary>
         /// WageChangeTextBox control.
@@ -92,5 +92,14 @@ namespace DB_Term_Project {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button SubmitChangesButton;
+        
+        /// <summary>
+        /// ErrorLabel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label ErrorLabel;
     }
 }
