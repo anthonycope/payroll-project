@@ -18,11 +18,7 @@ namespace DB_Term_Project.Account
     {
        protected void Page_Load(object sender, EventArgs e)
        {
-<<<<<<< HEAD
-
-=======
           usernameErrorLabel.Visible = false;
->>>>>>> Henry
        }
 
        protected void CreateUserButton_Click(object sender, EventArgs e)
@@ -32,10 +28,6 @@ namespace DB_Term_Project.Account
           bool isAdmin = AccountTypeDropDown.SelectedValue == "admin" ? true : false; //Set isAdmin to True iff the user type is "Admin".
           int eid = randomGenerator.Next(1, int.MaxValue); //Eid will be randomly generated for each employee.
 
-<<<<<<< HEAD
-
-=======
->>>>>>> Henry
           //FormsAuthentication.SetAuthCookie(RegisterUser.UserName, false /* createPersistentCookie */);
           //string continueUrl = RegisterUser.ContinueDestinationPageUrl;
 
@@ -43,12 +35,6 @@ namespace DB_Term_Project.Account
           {
              using (SqlCommand command = new SqlCommand())
              {
-<<<<<<< HEAD
-                Int32 rowsAffected;
-                command.CommandText = "INSERT INTO Employees (Eid,firstname, lastname, username, password, address, position, mgrid, birthdate, isAdmin) " +
-                                  "values (@eid,@first, @last,@user,@pass, @address, @position, @mgrID, @birthdate, @isAdmin)";
-                command.Connection = connection;
-=======
                 /*Check if the username already exists*/
                 command.CommandText = "SELECT * FROM Employees WHERE upper (username) = upper (@username)";
                 command.Connection = connection;
@@ -79,7 +65,6 @@ namespace DB_Term_Project.Account
                 command.CommandText = "INSERT INTO Employees (Eid,firstname, lastname, username, password, address, position, mgrid, birthdate, isAdmin, wage) " +
                                   "values (@eid,@first, @last,@user,@pass, @address, @position, @mgrID, @birthdate, @isAdmin, @wage)";
 
->>>>>>> Henry
 
                 command.Parameters.AddWithValue("@first", FirstnameTextBox.Text);
                 command.Parameters.AddWithValue("@last", LastnameTextBox.Text);
@@ -87,44 +72,22 @@ namespace DB_Term_Project.Account
                 command.Parameters.AddWithValue("@pass", Password.Text);
                 command.Parameters.AddWithValue("@address", AddressTextBox.Text);
                 command.Parameters.AddWithValue("@position", PositionTextBox.Text);
-<<<<<<< HEAD
-                command.Parameters.AddWithValue("@mgrid", 1); //Set manager id to the id of the user creating this account
-                command.Parameters.AddWithValue("@birthdate", BirthdayTextBox.Text);
-                command.Parameters.AddWithValue("@eid", eid);
-                command.Parameters.AddWithValue("@isAdmin", isAdmin);
-=======
                 command.Parameters.AddWithValue("@mgrid", Session["eid"]); //Set manager id to the id of the user creating this account
                 command.Parameters.AddWithValue("@birthdate", BirthdayTextBox.Text);
                 command.Parameters.AddWithValue("@eid", eid);
                 command.Parameters.AddWithValue("@isAdmin", isAdmin);
                 command.Parameters.AddWithValue("@wage", Double.Parse (WageTextBox.Text ) );
 
->>>>>>> Henry
 
                 try
                 {
                    connection.Open();
-<<<<<<< HEAD
-                   rowsAffected = command.ExecuteNonQuery();
-=======
                    command.ExecuteNonQuery();
->>>>>>> Henry
                    connection.Close();
                 }
                 catch
                 {
                    Page.RegisterClientScriptBlock("mes", "<script language='javascript'>alert('Sorry, an error occurred')</script>");
-<<<<<<< HEAD
-                   Response.Redirect("/Default.aspx");
-                   return;
-                }
-
-                Page.RegisterClientScriptBlock("mes", "<script language='javascript'>alert('User created.')</script>");
-                Response.Redirect("/Default.aspx");   
-             } //end inner using
-          }//end outer using
-       } // end function
-=======
                    return;
                 }
 
@@ -142,6 +105,5 @@ namespace DB_Term_Project.Account
           FirstnameTextBox.Text = LastnameTextBox.Text = PositionTextBox.Text = BirthdayTextBox.Text = AddressTextBox.Text = WageTextBox.Text
              = UserName.Text = Password.Text = ConfirmPassword.Text = "";
        }
->>>>>>> Henry
     }
 }
