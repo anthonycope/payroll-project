@@ -61,6 +61,7 @@ namespace DB_Term_Project.Account
                        eid = (int)reader["Eid"];
                        isAdmin = (byte) reader ["isAdmin"] == 1? true : false;
                        Session["Eid"] = eid;
+                       Session["isAdmin"] = isAdmin;
                     }
                     connection.Close();
                  }

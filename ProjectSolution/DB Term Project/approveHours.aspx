@@ -10,15 +10,6 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-    Manager Id&#39;s<br />
-    <asp:DropDownList ID="DropDownList1" runat="server" AutoPostBack="True"
-        DataSourceID="SqlDataSource2" DataTextField="mgrid" DataValueField="mgrid" 
-        onselectedindexchanged="DropDownList1_SelectedIndexChanged">
-    </asp:DropDownList>
-    <asp:SqlDataSource ID="SqlDataSource2" runat="server" 
-        ConnectionString="<%$ ConnectionStrings:DBProjectConnectionString %>" 
-        SelectCommand="SELECT DISTINCT [mgrid] FROM [Employees]">
-    </asp:SqlDataSource>
     <asp:GridView ID="WeekHourGridView" runat="server" AllowPaging="True" 
         AllowSorting="True" AutoGenerateColumns="False" 
         DataSourceID="SqlDataSource1" 
