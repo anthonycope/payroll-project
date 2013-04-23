@@ -9,17 +9,18 @@
     </h1>
     <p>
         Employee ID&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-        <asp:TextBox ID="EmployeeIDChangeTextBox" runat="server" 
-            style="margin-bottom: 0px"></asp:TextBox> <br /> <br />
-        Wage&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+        <asp:TextBox ID="EmployeeIDTextBox" runat="server" 
+            style="margin-bottom: 0px"></asp:TextBox> 
+        <br /><br />Wage&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
         <asp:TextBox ID="WageChangeTextBox" runat="server"></asp:TextBox> <br /> <br />
         Address&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <asp:TextBox ID="AddressChangeTextBox" runat="server"></asp:TextBox> <br /> <br />
         Username&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <asp:TextBox ID="UsernameChangeTextBox" runat="server"></asp:TextBox><br /> <br />
-        Password&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <asp:TextBox ID="PasswordChangeTextBox" runat="server"></asp:TextBox><br /> <br />
-        Confirm Password&nbsp;&nbsp;&nbsp; <asp:TextBox ID="ConfirmPasswordChangeTextBox" runat="server"></asp:TextBox><br /> <br />
+        Password&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <asp:TextBox ID="PasswordChangeTextBox" CssClass="passwordEntry" TextMode="Password" runat="server"></asp:TextBox><br /> <br />
+        Confirm Password&nbsp;&nbsp;&nbsp; <asp:TextBox ID="ConfirmPasswordChangeTextBox" CssClass="passwordEntry" TextMode="Password" runat="server"></asp:TextBox><br /> <br />
         Position&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <asp:TextBox ID="PositionChangeTextBox" runat="server"></asp:TextBox><br /> <br />
         Manager ID&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <asp:TextBox ID="MgrIDChangeTextbox" runat="server"></asp:TextBox> <br /><br />
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <asp:Button ID="SubmitChangesButton" runat="server" Text="Submit Changes" OnClick="SubmitChangesButton_Clicked" />     
-    </p>   
+        <asp:Button ID="SubmitChangesButton" runat="server" Text="Submit Changes" OnClick="SubmitChangesButton_Clicked" /> 
+        <asp:Label ID="ErrorLabel" runat="server" ForeColor="Red" Visible="false">Employee ID is required <br /><br /></asp:Label>  
+    </p>
 </asp:Content>

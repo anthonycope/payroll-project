@@ -8,8 +8,9 @@
         Passwords are required to be a minimum of <%= Membership.MinRequiredPasswordLength %> characters in length. <br />
     <span class="failureNotification">
         <asp:Literal ID="ErrorMessage" runat="server"></asp:Literal>
-    </span>
-</p>
+    <br />
+    <asp:Label ForeColor="Red" ID="usernameErrorLabel" runat="server">Username Already Exists</asp:Label>
+    </span></p>
 <div class="accountInfo">
     <fieldset id="employeeField" class="register">
         <legend>Employee Information</legend>
@@ -47,6 +48,13 @@
             <asp:TextBox ID="AddressTextBox" runat="server" CssClass="textEntry"></asp:TextBox>
             <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="AddressTextBox" 
                     CssClass="failureNotification" ErrorMessage="Address is required." ToolTip="Address is required." 
+                    ValidationGroup="RegisterUserValidationGroup">*</asp:RequiredFieldValidator>
+        </p>
+        <p>
+            <asp:Label ID="WageLabel" runat="server" AssociatedControlID="WageTextBox">Wage:</asp:Label>
+            <asp:TextBox ID="WageTextBox" runat="server" CssClass="textEntry"></asp:TextBox>
+            <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ControlToValidate="WageTextBox" 
+                    CssClass="failureNotification" ErrorMessage="Address is required." ToolTip="Wage is required" 
                     ValidationGroup="RegisterUserValidationGroup">*</asp:RequiredFieldValidator>
         </p>
     </fieldset>

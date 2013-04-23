@@ -31,15 +31,5 @@ namespace DB_Term_Project
         {
 
         }
-
-        protected void TextBox1_TextChanged(object sender, EventArgs e)
-        {
-            //position = TextBox1.Text;
-        }
-
-        protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
     }
 }
