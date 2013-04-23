@@ -23,7 +23,21 @@
             <div class="clear hideSkiplink">
                 <asp:Menu ID="NavigationMenu" runat="server" CssClass="menu" EnableViewState="false" IncludeStyleBlock="false" Orientation="Horizontal">
                     <Items>
+<<<<<<< HEAD
                         <asp:MenuItem NavigateUrl="~/Default.aspx" Text="Home" Value = "Home"/>
+<<<<<<< HEAD
+=======
+                        <asp:MenuItem NavigateUrl="~/About.aspx" Text="About" Value="About"/>
+=======
+                        <asp:MenuItem NavigateUrl="~/AddHours.aspx" Text="Add Hours" Value="Add Hours" />
+                        <asp:MenuItem NavigateUrl="~/approveHours.aspx" Text="Approve Hours" Value="Approve Hours" />
+                        <asp:MenuItem NavigateUrl="~/ChangeEmployeeInfo.aspx" Text="Modify Info" Value="Modify Info" />
+                        <asp:MenuItem NavigateUrl="~/RequestApproval.aspx" Text="Approval Request" Value="Approval Request" />
+                        <asp:MenuItem NavigateUrl="~/Search.aspx" Text="Search" Value="Search" />
+                        <asp:MenuItem NavigateUrl="~/ViewHours.aspx" Text="View Hours" Value="View Hours" />
+                        <asp:MenuItem NavigateUrl="~/EmployeeApproved.aspx" Text="Approval History" Value="Approval History" />
+>>>>>>> origin/Jesse
+>>>>>>> a6195343ceb4f6e4028f5fc19f525f4fc8a64dc3
                     </Items>
                 </asp:Menu>
             </div>
