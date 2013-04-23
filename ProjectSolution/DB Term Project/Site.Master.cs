@@ -16,7 +16,7 @@ namespace DB_Term_Project
     {
         //Keeps track of the items on the navigation bar; they're listed in the order in which
         // they appear in the navigation bar. This makes it easier to reference those items by index later.
-        private enum items { home, viewHours, approvalRequest, /*myPay,*/ createUser, /*payRoll,*/ addHours, modifyInfo, approveHours, search, about };
+        private enum items {viewHours, approvalRequest, addHours, /*myPay,*/ createUser, /*payRoll,*/ modifyInfo, approveHours, search, about };
 
         //Menu item IDs
         static string createUserID = "New User"; //ID for MenuItem_createUserItem object
@@ -75,6 +75,7 @@ namespace DB_Term_Project
                 //NavigationMenu.Items.AddAt((int)items.myPay, MenuItem_myPayHistory);
                 NavigationMenu.Items.AddAt((int)items.viewHours, MenuItem_viewHours);
                 NavigationMenu.Items.AddAt((int)items.approvalRequest, MenuItem_approvalRequest);
+                NavigationMenu.Items.AddAt((int)items.addHours, MenuItem_addHours); 
             }
 
 
@@ -82,8 +83,7 @@ namespace DB_Term_Project
             if (Account.Login.IsAdmin)
             {
                 NavigationMenu.Items.AddAt( (int)items.createUser, MenuItem_createUserItem);
-                //NavigationMenu.Items.AddAt((int)items.payRoll, MenuItem_payrollItem); 
-                NavigationMenu.Items.AddAt((int)items.addHours, MenuItem_addHours); 
+                //NavigationMenu.Items.AddAt((int)items.payRoll, MenuItem_payrollItem);               
                 NavigationMenu.Items.AddAt((int)items.modifyInfo, MenuItem_modifyInfo);
                 NavigationMenu.Items.AddAt((int)items.approveHours, MenuItem_approveHours);
                 NavigationMenu.Items.AddAt((int)items.search, MenuItem_search);
