@@ -8,8 +8,9 @@
         Passwords are required to be a minimum of <%= Membership.MinRequiredPasswordLength %> characters in length. <br />
     <span class="failureNotification">
         <asp:Literal ID="ErrorMessage" runat="server"></asp:Literal>
-    </span>
-</p>
+    <br />
+    <asp:Label ForeColor="Red" ID="usernameErrorLabel" runat="server">Username Already Exists</asp:Label>
+    </span></p>
 <div class="accountInfo">
     <fieldset id="employeeField" class="register">
         <legend>Employee Information</legend>

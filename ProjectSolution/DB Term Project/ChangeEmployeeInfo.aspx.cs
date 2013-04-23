@@ -47,7 +47,7 @@ namespace DB_Term_Project
           if (PositionChangeTextBox.Text != "")
               update += "position = @position,";
           if (MgrIDChangeTextbox.Text != "")
-              update += "mgrID = @mgrID";
+              update += "mgrID = @mgrid";
 
           //Check if the last character of the "update" string is a comma. If it is, remove it.
 
