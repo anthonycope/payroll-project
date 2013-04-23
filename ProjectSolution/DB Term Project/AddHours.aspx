@@ -33,8 +33,7 @@
             <SelectParameters>
                 <asp:ControlParameter ControlID="Calendar1" DbType="Date" Name="Day_Of" 
                     PropertyName="SelectedDate" />
-                <asp:ControlParameter ControlID="EidTextBox" Name="Eid" PropertyName="Text" 
-                    Type="Int32" />
+                <asp:SessionParameter Name="Eid" SessionField="Eid" Type="Int32" />
             </SelectParameters>
         </asp:SqlDataSource>
     </p>

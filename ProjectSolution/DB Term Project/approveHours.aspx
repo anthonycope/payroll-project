@@ -16,7 +16,7 @@
         onselectedindexchanged="DropDownList1_SelectedIndexChanged">
     </asp:DropDownList>
     <asp:SqlDataSource ID="SqlDataSource2" runat="server" 
-        ConnectionString="<%$ ConnectionStrings:DBProjectConnectionString %>" 
+        ConnectionString="<%$ ConnectionStrings:DBProjectConnectionString2 %>" 
         SelectCommand="SELECT DISTINCT [mgrid] FROM [Employees]">
     </asp:SqlDataSource>
     <asp:GridView ID="WeekHourGridView" runat="server" AllowPaging="True" 
@@ -37,7 +37,7 @@
         </Columns>
     </asp:GridView>
     <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
-        ConnectionString="<%$ ConnectionStrings:DBProjectConnectionString %>" 
+        ConnectionString="<%$ ConnectionStrings:DBProjectConnectionString2 %>" 
     SelectCommand="SELECT w.Eid, w.weekOf, w.Hours_Worked, w.Hours_Worked * e.Wage AS PayCheck FROM Weekly_Hours AS w INNER JOIN Employees AS e ON w.Eid = e.Eid AND e.Mgrid = 1">
     </asp:SqlDataSource>
     <span class="style1"><strong>
@@ -62,7 +62,7 @@
         </Columns>
     </asp:GridView>
     <asp:SqlDataSource ID="SqlDataSource3" runat="server" 
-        ConnectionString="<%$ ConnectionStrings:DBProjectConnectionString %>" 
+        ConnectionString="<%$ ConnectionStrings:DBProjectConnectionString2 %>" 
         SelectCommand="SELECT [Eid], [weekOf], [mgrid], [Amount], [Hours], [Approved] FROM [Approval] WHERE ([Approved] = 'Awaiting Approval') AND mgrid = 1">
         <SelectParameters>
             <asp:Parameter DefaultValue="'Awaiting Approval'" Name="Approved" 
