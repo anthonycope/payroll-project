@@ -212,8 +212,6 @@ namespace DB_Term_Project.Account {
         
         /// <summary>
         /// UserNameLabel control.
-<<<<<<< HEAD
-=======
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
@@ -295,96 +293,6 @@ namespace DB_Term_Project.Account {
         
         /// <summary>
         /// PasswordCompare control.
->>>>>>> Henry
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-<<<<<<< HEAD
-        protected global::System.Web.UI.WebControls.Label UserNameLabel;
-        
-        /// <summary>
-        /// UserName control.
-=======
-        protected global::System.Web.UI.WebControls.CompareValidator PasswordCompare;
-        
-        /// <summary>
-        /// CreateUserButton control.
->>>>>>> Henry
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-<<<<<<< HEAD
-        protected global::System.Web.UI.WebControls.TextBox UserName;
-        
-        /// <summary>
-        /// UserNameRequired control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator UserNameRequired;
-        
-        /// <summary>
-        /// PasswordLabel control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label PasswordLabel;
-        
-        /// <summary>
-        /// Password control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox Password;
-        
-        /// <summary>
-        /// PasswordRequired control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator PasswordRequired;
-        
-        /// <summary>
-        /// ConfirmPasswordLabel control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label ConfirmPasswordLabel;
-        
-        /// <summary>
-        /// ConfirmPassword control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox ConfirmPassword;
-        
-        /// <summary>
-        /// ConfirmPasswordRequired control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator ConfirmPasswordRequired;
-        
-        /// <summary>
-        /// PasswordCompare control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
@@ -399,8 +307,6 @@ namespace DB_Term_Project.Account {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-=======
->>>>>>> Henry
         protected global::System.Web.UI.WebControls.Button CreateUserButton;
     }
 }
