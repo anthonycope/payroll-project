@@ -74,7 +74,7 @@ namespace DB_Term_Project.Account
                  if (isValidLogin)
                  {
                     isLoggedIn = true;
-                    Response.Redirect("/Default.aspx");
+                    Response.Redirect("/AddHours.aspx");
                  }
               }
            }
