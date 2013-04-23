@@ -56,15 +56,14 @@ namespace DB_Term_Project.Account
                 catch //Display error message
                 {
                    connection.Close();
-                   Page.RegisterClientScriptBlock("mes", "<script language='javascript'>alert('Sorry, an error occurred')</script>");
-                   Response.Redirect("/Default.aspx");
+                   Page.RegisterClientScriptBlock("mes", "<script language='javascript'>alert('Sorry, an error occurred')</script>");;
                    return;
                 }
                 /*End username check*/
 
                 /*Create new user*/
-                command.CommandText = "INSERT INTO Employees (Eid,firstname, lastname, username, password, address, position, mgrid, birthdate, isAdmin) " +
-                                  "values (@eid,@first, @last,@user,@pass, @address, @position, @mgrID, @birthdate, @isAdmin)";
+                command.CommandText = "INSERT INTO Employees (Eid,firstname, lastname, username, password, address, position, mgrid, birthdate, isAdmin, wage) " +
+                                  "values (@eid,@first, @last,@user,@pass, @address, @position, @mgrID, @birthdate, @isAdmin, @wage)";
 
 
                 command.Parameters.AddWithValue("@first", FirstnameTextBox.Text);
@@ -77,6 +76,8 @@ namespace DB_Term_Project.Account
                 command.Parameters.AddWithValue("@birthdate", BirthdayTextBox.Text);
                 command.Parameters.AddWithValue("@eid", eid);
                 command.Parameters.AddWithValue("@isAdmin", isAdmin);
+                command.Parameters.AddWithValue("@wage", Double.Parse (WageTextBox.Text ) );
+
 
                 try
                 {
@@ -87,14 +88,22 @@ namespace DB_Term_Project.Account
                 catch
                 {
                    Page.RegisterClientScriptBlock("mes", "<script language='javascript'>alert('Sorry, an error occurred')</script>");
-                   Response.Redirect("/Default.aspx");
                    return;
                 }
 
                 Page.RegisterClientScriptBlock("mes", "<script language='javascript'>alert('User created.')</script>");
-                Response.Redirect("/Default.aspx");   
+                clearPageContents();
              } //end inner using
           }//end outer using
        } // end function
+
+       /// <summary>
+       /// Clears the contents of all textboxes
+       /// </summary>
+       private void clearPageContents()
+       {
+          FirstnameTextBox.Text = LastnameTextBox.Text = PositionTextBox.Text = BirthdayTextBox.Text = AddressTextBox.Text = WageTextBox.Text
+             = UserName.Text = Password.Text = ConfirmPassword.Text = "";
+       }
     }
 }

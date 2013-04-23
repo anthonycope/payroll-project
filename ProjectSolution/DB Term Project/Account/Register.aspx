@@ -50,6 +50,13 @@
                     CssClass="failureNotification" ErrorMessage="Address is required." ToolTip="Address is required." 
                     ValidationGroup="RegisterUserValidationGroup">*</asp:RequiredFieldValidator>
         </p>
+        <p>
+            <asp:Label ID="WageLabel" runat="server" AssociatedControlID="WageTextBox">Wage:</asp:Label>
+            <asp:TextBox ID="WageTextBox" runat="server" CssClass="textEntry"></asp:TextBox>
+            <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ControlToValidate="WageTextBox" 
+                    CssClass="failureNotification" ErrorMessage="Address is required." ToolTip="Wage is required" 
+                    ValidationGroup="RegisterUserValidationGroup">*</asp:RequiredFieldValidator>
+        </p>
     </fieldset>
 </div>
 <asp:Label ID="AccountTypeLabel" runat="server" AssociatedControlID="AccountTypeDropDown">Account Type: </asp:Label>
