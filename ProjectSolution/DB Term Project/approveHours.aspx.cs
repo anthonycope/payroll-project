@@ -23,7 +23,6 @@ namespace DB_Term_Project
 				
             //Make connection string consistent with the one used in the rest of the project.
             SqlDataSource3.ConnectionString = ConnectionStringClass.ConnectionString;
-            SqlDataSource2.ConnectionString = ConnectionStringClass.ConnectionString;
             SqlDataSource1.ConnectionString = ConnectionStringClass.ConnectionString;
         }
 
