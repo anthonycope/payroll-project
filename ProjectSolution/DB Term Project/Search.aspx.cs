@@ -33,7 +33,7 @@ namespace DB_Term_Project
         {
             bool textOkay = true;
 
-            using (SqlConnection conn = new SqlConnection(connectionString))
+            using (SqlConnection conn = new SqlConnection(ConnectionStringClass.ConnectionString))
             using (SqlCommand cmd = new SqlCommand())
             {
                 cmd.CommandText = "Search";
