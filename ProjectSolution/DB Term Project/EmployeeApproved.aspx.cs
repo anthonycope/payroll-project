@@ -11,7 +11,10 @@ namespace DB_Term_Project
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+           //Make connection strings the same as the one defined in Default.aspx.cs.
+           SqlDataSource1.ConnectionString = ConnectionStringClass.ConnectionString;
+           SqlDataSource2.ConnectionString = ConnectionStringClass.ConnectionString;
+           SqlDataSource3.ConnectionString = ConnectionStringClass.ConnectionString;
         }
 
         protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e)
