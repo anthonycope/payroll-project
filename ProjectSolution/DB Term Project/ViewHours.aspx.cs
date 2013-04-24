@@ -12,7 +12,7 @@ namespace DB_Term_Project
     {
         DateTime daySelected = DateTime.MaxValue;
         int eid;
-        String connectionString = "Data Source=(local);Initial Catalog=DBProject;Integrated Security=True"; //"Data Source=(local)\\SQLEXPRESS;Initial Catalog=DBProject;Integrated Security=True";
+        String connectionString = "Data Source=(local)\\SQLEXPRESS;Initial Catalog=DBProject;Integrated Security=True";
         //Anthony's Connection// "Data Source=(local);Initial Catalog=DBProject;Integrated Security=True"
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -20,29 +20,38 @@ namespace DB_Term_Project
             {
                 daySelected = (DateTime)Session["SelectedDate"];
             }
-  
-            if (Session["Eid"] != null)
+
+            if (Session["isAdmin"].ToString() == "True")
             {
-                eid = (int)Session["Eid"];
+                LiteralEid.Visible = true;
+                EidTextBox.Visible = true;
+            }
+            else
+            {
+                if (Session["Eid"] != null)
+                {
+                    eid = (int)Session["Eid"];
+                }
             }
         }
-
-
- 
 
         protected void Calendar1_SelectionChanged(object sender, EventArgs e)
         {
             Session["SelectedDate"] = Calendar1.SelectedDate.Date;
             daySelected = (DateTime)Session["SelectedDate"];
 
+            if (Session["isAdmin"].ToString() == "True")
+            {
+                eid = Convert.ToInt32(EidTextBox.Text);
+            }
 
+            SqlDataSource1.SelectCommand = "SELECT * FROM [DBProject].[dbo].[Daily_Hours] WHERE Day_Of = '" + Calendar1.SelectedDate.Date.ToString() + "' AND Eid = " + eid.ToString();
+            GridView1.DataBind();
         }
 
         protected void EidTextBox_TextChanged(object sender, EventArgs e)
         {
-            Session["Eid"] = Convert.ToInt32(EidTextBox.Text);
-            eid = (int)Session["Eid"];
-        }
-
+            eid = Convert.ToInt32(EidTextBox.Text);
+        }    
     }
 }

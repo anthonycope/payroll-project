@@ -100,7 +100,7 @@ namespace DB_Term_Project
               //admin and user options will be gone
               Account.Login.IsLoggedIn = false;
               Account.Login.IsAdmin = false;
-              Response.Redirect("/Default.aspx");
+              Response.Redirect("/Account/Login.aspx");
            }
            else
            {
