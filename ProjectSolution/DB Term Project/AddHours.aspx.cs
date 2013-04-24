@@ -13,10 +13,22 @@ namespace DB_Term_Project
         DateTime daySelected = DateTime.MaxValue;
         Double dayHours;
         int eid;
-        String connectionString = "Data Source=(local);Initial Catalog=DBProject;Integrated Security=True"; //"Data Source=(local)\\SQLEXPRESS;Initial Catalog=DBProject;Integrated Security=True";
+        String connectionString = "Data Source=(local)\\SQLEXPRESS;Initial Catalog=DBProject;Integrated Security=True";
         //Anthony's Connection// "Data Source=(local);Initial Catalog=DBProject;Integrated Security=True"
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["isAdmin"].ToString() == "True")
+            {
+                LiteralEid.Visible = true;
+                EidTextBox.Visible = true;
+            }
+            else
+            {
+                if (Session["Eid"] != null)
+                {
+                    eid = (int)Session["Eid"];
+                }
+            }
             if (Session["SelectedDate"] != null)
             {
                 daySelected = (DateTime)Session["SelectedDate"];
@@ -24,11 +36,6 @@ namespace DB_Term_Project
             if (Session["DayHours"] != null)
             {
                 dayHours = (Double)Session["DayHours"];
-            }
-
-            if (Session["Eid"] != null)
-            {
-                eid = (int)Session["Eid"];
             }
         }
 
@@ -73,9 +80,13 @@ namespace DB_Term_Project
                 SelectDateLabel.Visible = true;
                 //SelectDateLabel.Text = Convert.ToString(daySelected);
 
+                if (EidTextBox.Visible == true)
+                {
+                    eid = Convert.ToInt32(EidTextBox.Text);
+                }
 
                 //loop through days, subtract 1 day each time until day is sunday, use this value for weekOF
-                DateTime weekOf = daySelected;
+                DateTime weekOf = Calendar1.SelectedDate.Date;
                 while (weekOf.DayOfWeek != DayOfWeek.Sunday) // if not sunday, subtract a day until sunday
                 {
                     //weekOf.Subtract(TimeSpan.FromDays(1)); // subtract a day
@@ -111,14 +122,12 @@ namespace DB_Term_Project
                 //reset variables
                 Session["SelectedDate"] = null;
                 Session["DayHours"] = null;
-                Session["Eid"] = null;
 
                 daySelected = DateTime.MaxValue;
                 dayHours = 0;
-                eid = 0;
 
                 Calendar1.SelectedDates.Clear();
-                EidTextBox.Text = EidTextBox.Text.Remove(0);
+                EidTextBox.Text = "";
                 HoursTextBox.Text = HoursTextBox.Text.Remove(0);
             }
         }
@@ -127,14 +136,11 @@ namespace DB_Term_Project
         {
             Session["SelectedDate"] = Calendar1.SelectedDate.Date;
             daySelected = (DateTime)Session["SelectedDate"];
-
-
         }
 
         protected void EidTextBox_TextChanged(object sender, EventArgs e)
         {
-            Session["Eid"] = Convert.ToInt32(EidTextBox.Text);
-            eid = (int)Session["Eid"];
+            eid = Convert.ToInt32(EidTextBox.Text);   
         }
 
         protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
