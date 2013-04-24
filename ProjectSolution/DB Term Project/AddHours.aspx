@@ -19,8 +19,7 @@
     </p>
     <p>
         <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" 
-            DataSourceID="SqlDataSource1" 
-            onselectedindexchanged="GridView1_SelectedIndexChanged" 
+            DataSourceID="SqlDataSource1"  
             ShowHeaderWhenEmpty="True">
             <Columns>
                 <asp:BoundField DataField="Hours_Worked" HeaderText="Hours_Worked" 
@@ -28,14 +27,7 @@
             </Columns>
         </asp:GridView>
         <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
-            ConnectionString="<%$ ConnectionStrings:DBProjectConnectionString2 %>" 
-            SelectCommand="SELECT [Hours_Worked] FROM [Daily_Hours] WHERE (([Day_Of] = @Day_Of) AND ([Eid] = @Eid))">
-            <SelectParameters>
-                <asp:ControlParameter ControlID="Calendar1" DbType="Date" Name="Day_Of" 
-                    PropertyName="SelectedDate" />
-                <asp:ControlParameter ControlID="EidTextBox" Name="Eid" PropertyName="Text" 
-                    Type="Int32" />
-            </SelectParameters>
+            ConnectionString="<%$ ConnectionStrings:DBProjectConnectionString %>"> 
         </asp:SqlDataSource>
     </p>
     Enter number of hours worked<br />

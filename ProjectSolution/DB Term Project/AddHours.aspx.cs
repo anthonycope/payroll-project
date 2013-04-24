@@ -135,22 +135,19 @@ namespace DB_Term_Project
         {
             Session["SelectedDate"] = Calendar1.SelectedDate.Date;
             daySelected = (DateTime)Session["SelectedDate"];
+
+            if (Session["isAdmin"].ToString() == "True")
+            {
+                eid = Convert.ToInt32(EidTextBox.Text);
+            }
+
+            SqlDataSource1.SelectCommand = "SELECT [Hours_Worked] FROM [DBProject].[dbo].[Daily_Hours] WHERE Day_Of = '" + Calendar1.SelectedDate.Date + "' AND Eid =" + eid;
+            GridView1.DataBind();
         }
 
         protected void EidTextBox_TextChanged(object sender, EventArgs e)
         {
             eid = Convert.ToInt32(EidTextBox.Text);   
         }
-
-        protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        protected void FormView1_PageIndexChanging(object sender, FormViewPageEventArgs e)
-        {
-
-        }
-
     }
 }
