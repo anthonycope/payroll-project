@@ -5,12 +5,12 @@
 </asp:Content>
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent"> 
     <h2>
-        Add/Edit Daily HourS</h2>
+        Add/Edit Daily Hours</h2>
 <p>
-        Enter Eid&nbsp; // change to use the eid of person logged in automatically</p>
+    <asp:Literal ID="LiteralEid" runat="server" Visible="false">Enter Eid</asp:Literal></p>
     <p>
         <asp:TextBox ID="EidTextBox" runat="server" 
-            ontextchanged="EidTextBox_TextChanged"></asp:TextBox>
+            ontextchanged="EidTextBox_TextChanged" Visible="False"></asp:TextBox>
     &nbsp;</p>
 <p>
         Select Day
@@ -28,7 +28,7 @@
             </Columns>
         </asp:GridView>
         <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
-            ConnectionString="<%$ ConnectionStrings:DBProjectConnectionString2 %>" 
+            ConnectionString="<%$ ConnectionStrings:DBProjectConnectionString %>" 
             SelectCommand="SELECT [Hours_Worked] FROM [Daily_Hours] WHERE (([Day_Of] = @Day_Of) AND ([Eid] = @Eid))">
             <SelectParameters>
                 <asp:ControlParameter ControlID="Calendar1" DbType="Date" Name="Day_Of" 
