@@ -22,8 +22,7 @@
     </p>
     <p>
         <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" 
-            DataSourceID="SqlDataSource1"  
-            ShowHeaderWhenEmpty="True">
+            DataSourceID="SqlDataSource1">
             <Columns>
                 <asp:BoundField DataField="Hours_Worked" HeaderText="Hours_Worked" 
                     SortExpression="Hours_Worked" />
