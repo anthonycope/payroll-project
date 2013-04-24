@@ -32,17 +32,14 @@
         <SortedDescendingHeaderStyle BackColor="#6F8DAE" />
     </asp:GridView>
     <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
-<<<<<<< HEAD
-        ConnectionString="<%$ ConnectionStrings:DBProjectConnectionString2 %>" 
+
+        ConnectionString="<%$ ConnectionStrings:DBProjectConnectionString %>" 
         SelectCommand="SELECT weekOf, Hours_Worked FROM Weekly_Hours WHERE (Eid = @eid) AND (weekOf = @weekOf)">
         <SelectParameters>
             <asp:SessionParameter DefaultValue="" Name="eid" SessionField="Eid" />
             <asp:ControlParameter ControlID="HiddenField1" DefaultValue="" Name="weekOf" 
                 PropertyName="Value" />
         </SelectParameters>
-=======
-        ConnectionString="<%$ ConnectionStrings:DBProjectConnectionString %>">
->>>>>>> origin/Jesse
     </asp:SqlDataSource>
     <br />
     <asp:Button ID="SubmitApprovalButton" runat="server" onclick="ApprovalButton_Click" 
