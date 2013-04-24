@@ -104,6 +104,9 @@ namespace DB_Term_Project
             weekOf = weekOf.Date;
             HiddenField1.Value = Convert.ToString(weekOf);
 
+            SqlDataSource1.SelectCommand = "SELECT weekOf, Hours_Worked FROM Weekly_Hours WHERE Eid = " + eid + " AND weekOf = '" + weekOf.ToString() + "'";
+            GridView1.DataBind();
+
         }
 
         protected void EidTextBox_TextChanged(object sender, EventArgs e)
