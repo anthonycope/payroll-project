@@ -13,12 +13,7 @@ namespace DB_Term_Project
         DateTime daySelected = DateTime.MaxValue;
         Double dayHours;
         int eid;
-<<<<<<< HEAD
-        String connectionString = "Data Source=(local)\\SQLEXPRESS;Initial Catalog=DBProject;Integrated Security=True";
-        //Anthony's Connection// "Data Source=(local);Initial Catalog=DBProject;Integrated Security=True"
-=======
 
->>>>>>> Henry
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["isAdmin"].ToString() == "True")
