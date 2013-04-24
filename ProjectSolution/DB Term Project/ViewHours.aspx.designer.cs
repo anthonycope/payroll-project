@@ -13,6 +13,15 @@ namespace DB_Term_Project {
     public partial class ViewHours {
         
         /// <summary>
+        /// LiteralEid control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal LiteralEid;
+        
+        /// <summary>
         /// EidTextBox control.
         /// </summary>
         /// <remarks>

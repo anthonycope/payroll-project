@@ -7,10 +7,10 @@
     <h2>
         View Employee daily hours</h2>
 <p>
-        Enter Eid</p>
+       <asp:Literal ID="LiteralEid" runat="server" Visible="false">Enter Eid</asp:Literal></p>
     <p>
         <asp:TextBox ID="EidTextBox" runat="server" 
-            ontextchanged="EidTextBox_TextChanged"></asp:TextBox>
+            ontextchanged="EidTextBox_TextChanged" Visible="false"></asp:TextBox>
     &nbsp;</p>
 <p>
         Select Day
@@ -31,15 +31,7 @@
     </asp:GridView>
     <p>
         <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
-            ConnectionString="<%$ ConnectionStrings:DBProjectConnectionString2 %>" 
-            
-            SelectCommand="SELECT * FROM [Daily_Hours] WHERE (([Day_Of] = @Day_Of) AND ([Eid] = @Eid))">
-            <SelectParameters>
-                <asp:ControlParameter ControlID="Calendar1" DbType="Date" Name="Day_Of" 
-                    PropertyName="SelectedDate" />
-                <asp:ControlParameter ControlID="EidTextBox" Name="Eid" PropertyName="Text" 
-                    Type="Int32" />
-            </SelectParameters>
+            ConnectionString="<%$ ConnectionStrings:DBProjectConnectionString %>">
         </asp:SqlDataSource>
     </p>
     &nbsp;&nbsp;&nbsp;
