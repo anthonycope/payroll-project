@@ -15,15 +15,15 @@ namespace DB_Term_Project
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            //Make connection string consistent with the one used in the rest of the project.
+            SqlDataSource3.ConnectionString = ConnectionStringClass.ConnectionString;
+            SqlDataSource1.ConnectionString = ConnectionStringClass.ConnectionString;
+
             mgrid = Session["Eid"].ToString();
             SqlDataSource1.SelectCommand = "SELECT w.Eid, w.weekOf, w.Hours_Worked, w.Hours_Worked * e.Wage AS PayCheck FROM Weekly_Hours AS w INNER JOIN Employees AS e ON w.Eid = e.Eid AND e.Mgrid = " + mgrid;
             SqlDataSource3.SelectCommand = "SELECT [Eid], [weekOf], [mgrid], [Amount], [Hours], [Approved] FROM [Approval] WHERE ([Approved] = 'Awaiting Approval') AND mgrid = " + mgrid;
             WeekHourGridView.DataBind();
             GridViewAwaitingApproval.DataBind();
-				
-            //Make connection string consistent with the one used in the rest of the project.
-            SqlDataSource3.ConnectionString = ConnectionStringClass.ConnectionString;
-            SqlDataSource1.ConnectionString = ConnectionStringClass.ConnectionString;
         }
 
         protected void WeekHourGridView_SelectedIndexChanged(object sender, EventArgs e)
