@@ -14,6 +14,9 @@ namespace DB_Term_Project
       protected void Page_Load(object sender, EventArgs e)
       {
           ErrorLabel.Visible = false;
+          MgrIDErrorLabel.Visible = false;
+          employeeIDErrorLabel.Visible = false;
+          WageErrorLabel.Visible = false;
       }
 
       protected void SubmitChangesButton_Clicked(object sender, EventArgs e)
@@ -35,6 +38,10 @@ namespace DB_Term_Project
               ErrorLabel.Visible = true;
               return;
           }
+
+          if (!validateFields () )
+              return;
+          
 
           //Generate UPDATE clause (include only information from textboxes that are no blank)
           if (WageChangeTextBox.Text != "")
@@ -103,6 +110,57 @@ namespace DB_Term_Project
       {
          EmployeeIDTextBox.Text = WageChangeTextBox.Text = AddressChangeTextBox.Text = UsernameChangeTextBox.Text = PasswordChangeTextBox.Text
             = ConfirmPasswordChangeTextBox.Text = PositionChangeTextBox.Text = MgrIDChangeTextbox.Text = "";
+      }
+
+
+      /// <summary>
+      /// Returns true if fields that must be numeric contain numeric information.
+      /// </summary>
+      /// <returns></returns>
+      private bool validateFields()
+      {
+          bool isValid = true;
+
+          if (WageChangeTextBox.Text != "")
+          {
+              try
+              {
+                  double.Parse(WageChangeTextBox.Text);
+              }
+              catch
+              {
+                  WageErrorLabel.Visible = true;
+                  isValid = false;
+              }
+          }
+
+          if (EmployeeIDTextBox.Text != "")
+          {
+              try
+              {
+                  int.Parse(EmployeeIDTextBox.Text);
+              }
+              catch
+              {
+                  employeeIDErrorLabel.Visible = true;
+                  isValid = false;
+              }
+          }
+
+          if (MgrIDChangeTextbox.Text != "")
+          {
+              try
+              {
+                  int.Parse(MgrIDChangeTextbox.Text);
+              }
+              catch
+              {
+                  MgrIDErrorLabel.Visible = true;
+                  isValid = false;
+              }
+          }
+
+          return isValid;
       }
    }
 }

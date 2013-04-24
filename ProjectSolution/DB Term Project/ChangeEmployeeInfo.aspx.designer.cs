@@ -22,6 +22,15 @@ namespace DB_Term_Project {
         protected global::System.Web.UI.WebControls.TextBox EmployeeIDTextBox;
         
         /// <summary>
+        /// employeeIDErrorLabel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label employeeIDErrorLabel;
+        
+        /// <summary>
         /// WageChangeTextBox control.
         /// </summary>
         /// <remarks>
@@ -29,6 +38,15 @@ namespace DB_Term_Project {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox WageChangeTextBox;
+        
+        /// <summary>
+        /// WageErrorLabel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label WageErrorLabel;
         
         /// <summary>
         /// AddressChangeTextBox control.
@@ -83,6 +101,15 @@ namespace DB_Term_Project {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox MgrIDChangeTextbox;
+        
+        /// <summary>
+        /// MgrIDErrorLabel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label MgrIDErrorLabel;
         
         /// <summary>
         /// SubmitChangesButton control.
