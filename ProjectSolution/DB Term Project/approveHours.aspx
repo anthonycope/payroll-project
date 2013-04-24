@@ -84,7 +84,39 @@
         ConnectionString="<%$ ConnectionStrings:DBProjectConnectionString %>" 
     SelectCommand="SELECT w.Eid, w.weekOf, w.Hours_Worked, w.Hours_Worked * e.Wage AS PayCheck FROM Weekly_Hours AS w INNER JOIN Employees AS e ON w.Eid = e.Eid AND e.Mgrid = 1">
     </asp:SqlDataSource>
+    <br />
+    <br />
+    <span class="style1"><strong>
+    Past Approved Weeks</strong></span><br />
     
+    <asp:GridView ID="GridView1" runat="server" AllowPaging="True" 
+        AllowSorting="True" AutoGenerateColumns="False" DataKeyNames="Eid,weekOf" 
+        DataSourceID="SqlDataSource2">
+        <Columns>
+            <asp:BoundField DataField="Eid" HeaderText="Eid" ReadOnly="True" 
+                SortExpression="Eid" />
+            <asp:BoundField DataField="weekOf" HeaderText="weekOf" ReadOnly="True" 
+                SortExpression="weekOf" />
+            <asp:BoundField DataField="Amount" HeaderText="Amount" 
+                SortExpression="Amount" />
+            <asp:BoundField DataField="Hours" HeaderText="Hours" SortExpression="Hours" />
+            <asp:BoundField DataField="Approved" HeaderText="Approved" 
+                SortExpression="Approved" />
+        </Columns>
+        <EditRowStyle BackColor="#999999" />
+        <FooterStyle BackColor="#0c543b" Font-Bold="True" ForeColor="White" />
+        <HeaderStyle BackColor="#0c543b" Font-Bold="True" ForeColor="White" />
+        <PagerStyle BackColor="#094f39" ForeColor="White" HorizontalAlign="Center" />
+        <RowStyle BackColor="#F7F6F3" ForeColor="#333333" />
+        <SelectedRowStyle BackColor="#E2DED6" Font-Bold="True" ForeColor="#333333" />
+        <SortedAscendingCellStyle BackColor="#E9E7E2" />
+        <SortedAscendingHeaderStyle BackColor="#094f39" />
+        <SortedDescendingCellStyle BackColor="#FFFDF8" />
+        <SortedDescendingHeaderStyle BackColor="#094f39" />
+    </asp:GridView>
+    <asp:SqlDataSource ID="SqlDataSource2" runat="server" 
+        ConnectionString="<%$ ConnectionStrings:DBProjectConnectionString2 %>">
+    </asp:SqlDataSource>
     
     <br />
     <br />

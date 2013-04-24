@@ -18,12 +18,15 @@ namespace DB_Term_Project
             //Make connection string consistent with the one used in the rest of the project.
             SqlDataSource3.ConnectionString = ConnectionStringClass.ConnectionString;
             SqlDataSource1.ConnectionString = ConnectionStringClass.ConnectionString;
+            SqlDataSource2.ConnectionString = ConnectionStringClass.ConnectionString;
 
             mgrid = Session["Eid"].ToString();
             SqlDataSource1.SelectCommand = "SELECT w.Eid, w.weekOf, w.Hours_Worked, w.Hours_Worked * e.Wage AS PayCheck FROM Weekly_Hours AS w INNER JOIN Employees AS e ON w.Eid = e.Eid AND e.Mgrid = " + mgrid;
             SqlDataSource3.SelectCommand = "SELECT [Eid], [weekOf], [mgrid], [Amount], [Hours], [Approved] FROM [Approval] WHERE ([Approved] = 'Awaiting Approval') AND mgrid = " + mgrid;
+            SqlDataSource2.SelectCommand = "SELECT [Eid], [weekOf], [Amount], [Hours], [Approved] FROM [Approval] WHERE ([Approved] <> 'Awaiting Approval') AND mgrid = " + mgrid;
             WeekHourGridView.DataBind();
             GridViewAwaitingApproval.DataBind();
+            GridView1.DataBind();
         }
 
         protected void WeekHourGridView_SelectedIndexChanged(object sender, EventArgs e)
@@ -73,6 +76,9 @@ namespace DB_Term_Project
             }
 
             Literal1.Text = "Approval Successful";
+            WeekHourGridView.DataBind();
+            GridViewAwaitingApproval.DataBind();
+            GridView1.DataBind();
             //SelectDateLabel.Text = Convert.ToString(weekOf);
         }
 
@@ -103,7 +109,9 @@ namespace DB_Term_Project
 
 
             Literal1.Text = "Approval Successful";
+            WeekHourGridView.DataBind();
             GridViewAwaitingApproval.DataBind();
+            GridView1.DataBind();
         }
     }
 }
