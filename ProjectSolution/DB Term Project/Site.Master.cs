@@ -102,9 +102,9 @@ namespace DB_Term_Project
               Account.Login.IsAdmin = false;
               Response.Redirect("/Account/Login.aspx");
            }
-           else
+           else //Redirect user to add hours page upon login
            {
-              Response.Redirect("/Account/Login.aspx");
+              Response.Redirect("/AddHours.aspx");
            }
         }
     }
