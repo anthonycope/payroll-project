@@ -113,5 +113,37 @@ namespace DB_Term_Project
             GridViewAwaitingApproval.DataBind();
             GridView1.DataBind();
         }
+
+        protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            GridViewRow row = GridView1.SelectedRow;
+
+            string queryString = "UPDATE DBProject.dbo.Approval SET Approved = 'Disapproved' WHERE Eid = " + row.Cells[1].Text + " AND weekOf = '" + row.Cells[2].Text + "' AND Amount = " + row.Cells[3].Text;
+            //send to database
+            using (SqlConnection connection = new SqlConnection(ConnectionStringClass.ConnectionString))
+            {
+                SqlCommand command = new SqlCommand(queryString, connection);
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                try
+                {
+                    while (reader.Read())
+                    {
+                        Console.WriteLine(String.Format("{0}, {1}", reader[0], reader[1]));
+                    }
+                }
+                finally
+                {
+                    // Always call Close when done reading.
+                    reader.Close();
+                }
+            }
+
+
+            Literal1.Text = "Disapproval Successful";
+            WeekHourGridView.DataBind();
+            GridViewAwaitingApproval.DataBind();
+            GridView1.DataBind();
+        }
     }
 }

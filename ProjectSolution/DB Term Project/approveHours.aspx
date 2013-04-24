@@ -91,8 +91,11 @@
     
     <asp:GridView ID="GridView1" runat="server" AllowPaging="True" 
         AllowSorting="True" AutoGenerateColumns="False" DataKeyNames="Eid,weekOf" 
-        DataSourceID="SqlDataSource2">
+        DataSourceID="SqlDataSource2" 
+        onselectedindexchanged="GridView1_SelectedIndexChanged">
         <Columns>
+            <asp:CommandField ButtonType="Button" SelectText="Disapprove" 
+                ShowSelectButton="True" />
             <asp:BoundField DataField="Eid" HeaderText="Eid" ReadOnly="True" 
                 SortExpression="Eid" />
             <asp:BoundField DataField="weekOf" HeaderText="weekOf" ReadOnly="True" 
