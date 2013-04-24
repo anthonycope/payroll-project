@@ -30,7 +30,7 @@ namespace DB_Term_Project
         {
             GridViewRow row = WeekHourGridView.SelectedRow;
 
-            string queryString = "INSERT INTO DBProject.dbo.Approval VALUES(" + row.Cells[1].Text + ",'" + row.Cells[2].Text + "'," + mgrid + "," + row.Cells[4].Text + "," + row.Cells[3].Text + "," + "'Approved')";
+            string queryString = "DELETE FROM DBProject.dbo.Approval WHERE Eid = " + row.Cells[1].Text + " AND weekOf = '" + row.Cells[2].Text + "'";
             //send to database
             using (SqlConnection connection = new SqlConnection(ConnectionStringClass.ConnectionString))
             {
@@ -51,6 +51,26 @@ namespace DB_Term_Project
                 }
             }
 
+            queryString = "INSERT INTO DBProject.dbo.Approval VALUES(" + row.Cells[1].Text + ",'" + row.Cells[2].Text + "'," + mgrid + "," + row.Cells[4].Text + "," + row.Cells[3].Text + "," + "'Approved')";
+            //send to database
+            using (SqlConnection connection = new SqlConnection(ConnectionStringClass.ConnectionString))
+            {
+                SqlCommand command = new SqlCommand(queryString, connection);
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                try
+                {
+                    while (reader.Read())
+                    {
+                        Console.WriteLine(String.Format("{0}, {1}", reader[0], reader[1]));
+                    }
+                }
+                finally
+                {
+                    // Always call Close when done reading.
+                    reader.Close();
+                }
+            }
 
             Literal1.Text = "Approval Successful";
             //SelectDateLabel.Text = Convert.ToString(weekOf);
