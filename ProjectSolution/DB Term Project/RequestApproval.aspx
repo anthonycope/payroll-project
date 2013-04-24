@@ -21,8 +21,8 @@
                 SortExpression="Hours_Worked" />
         </Columns>
         <EditRowStyle BackColor="#999999" />
-        <FooterStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
-        <HeaderStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
+        <FooterStyle BackColor="#0c543b" Font-Bold="True" ForeColor="White" />
+        <HeaderStyle BackColor="#0c543b" Font-Bold="True" ForeColor="White" />
         <PagerStyle BackColor="#284775" ForeColor="White" HorizontalAlign="Center" />
         <RowStyle BackColor="#F7F6F3" ForeColor="#333333" />
         <SelectedRowStyle BackColor="#E2DED6" Font-Bold="True" ForeColor="#333333" />
@@ -32,6 +32,7 @@
         <SortedDescendingHeaderStyle BackColor="#6F8DAE" />
     </asp:GridView>
     <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
+<<<<<<< HEAD
         ConnectionString="<%$ ConnectionStrings:DBProjectConnectionString2 %>" 
         SelectCommand="SELECT weekOf, Hours_Worked FROM Weekly_Hours WHERE (Eid = @eid) AND (weekOf = @weekOf)">
         <SelectParameters>
@@ -39,6 +40,9 @@
             <asp:ControlParameter ControlID="HiddenField1" DefaultValue="" Name="weekOf" 
                 PropertyName="Value" />
         </SelectParameters>
+=======
+        ConnectionString="<%$ ConnectionStrings:DBProjectConnectionString %>">
+>>>>>>> origin/Jesse
     </asp:SqlDataSource>
     <br />
     <asp:Button ID="SubmitApprovalButton" runat="server" onclick="ApprovalButton_Click" 

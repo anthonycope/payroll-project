@@ -16,7 +16,8 @@
         onselectedindexchanged="WeekHourGridView_SelectedIndexChanged" 
         DataKeyNames="Eid,weekOf">
         <Columns>
-            <asp:CommandField SelectText="Approve" ShowSelectButton="True" />
+            <asp:CommandField SelectText="Approve" ShowSelectButton="True" 
+                ButtonType="Button" />
             <asp:BoundField DataField="Eid" HeaderText="Eid" ReadOnly="True" 
                 SortExpression="Eid" />
             <asp:BoundField DataField="weekOf" HeaderText="weekOf" ReadOnly="True" 
@@ -26,6 +27,16 @@
             <asp:BoundField DataField="PayCheck" HeaderText="PayCheck" ReadOnly="True" 
                 SortExpression="PayCheck" />
         </Columns>
+        <EditRowStyle BackColor="#999999" />
+        <FooterStyle BackColor="#0c543b" Font-Bold="True" ForeColor="White" />
+        <HeaderStyle BackColor="#0c543b" Font-Bold="True" ForeColor="White" />
+        <PagerStyle BackColor="#094f39" ForeColor="White" HorizontalAlign="Center" />
+        <RowStyle BackColor="#F7F6F3" ForeColor="#333333" />
+        <SelectedRowStyle BackColor="#E2DED6" Font-Bold="True" ForeColor="#333333" />
+        <SortedAscendingCellStyle BackColor="#E9E7E2" />
+        <SortedAscendingHeaderStyle BackColor="#094f39" />
+        <SortedDescendingCellStyle BackColor="#FFFDF8" />
+        <SortedDescendingHeaderStyle BackColor="#094f39" />
     </asp:GridView>
     <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
         ConnectionString="<%$ ConnectionStrings:DBProjectConnectionString %>" 
@@ -40,7 +51,8 @@
         AllowSorting="True" 
         onselectedindexchanged="GridViewAwaitingApproval_SelectedIndexChanged">
         <Columns>
-            <asp:CommandField SelectText="Approve" ShowSelectButton="True" />
+            <asp:CommandField SelectText="Approve" ShowSelectButton="True" 
+                ButtonType="Button" />
             <asp:BoundField DataField="Eid" HeaderText="Eid" ReadOnly="True" 
                 SortExpression="Eid" />
             <asp:BoundField DataField="weekOf" HeaderText="weekOf" ReadOnly="True" 
@@ -51,6 +63,16 @@
             <asp:BoundField DataField="Approved" HeaderText="Approved" 
                 SortExpression="Approved" />
         </Columns>
+        <EditRowStyle BackColor="#999999" />
+        <FooterStyle BackColor="#0c543b" Font-Bold="True" ForeColor="White" />
+        <HeaderStyle BackColor="#0c543b" Font-Bold="True" ForeColor="White" />
+        <PagerStyle BackColor="#094f39" ForeColor="White" HorizontalAlign="Center" />
+        <RowStyle BackColor="#F7F6F3" ForeColor="#333333" />
+        <SelectedRowStyle BackColor="#E2DED6" Font-Bold="True" ForeColor="#333333" />
+        <SortedAscendingCellStyle BackColor="#E9E7E2" />
+        <SortedAscendingHeaderStyle BackColor="#094f39" />
+        <SortedDescendingCellStyle BackColor="#FFFDF8" />
+        <SortedDescendingHeaderStyle BackColor="#094f39" />
     </asp:GridView>
     <asp:SqlDataSource ID="SqlDataSource3" runat="server" 
         ConnectionString="<%$ ConnectionStrings:DBProjectConnectionString %>" 

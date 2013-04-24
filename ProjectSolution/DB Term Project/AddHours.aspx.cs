@@ -138,7 +138,18 @@ namespace DB_Term_Project
 
             if (Session["isAdmin"].ToString() == "True")
             {
+<<<<<<< HEAD
                 eid = Convert.ToInt32(EidTextBox.Text);
+=======
+                if (EidTextBox.Text != String.Empty)
+                {
+                    eid = Convert.ToInt32(EidTextBox.Text);
+                }
+                else
+                {
+                    eid = (int)Session["Eid"];
+                }
+>>>>>>> origin/Jesse
             }
 
             SqlDataSource1.SelectCommand = "SELECT [Hours_Worked] FROM [DBProject].[dbo].[Daily_Hours] WHERE Day_Of = '" + Calendar1.SelectedDate.Date + "' AND Eid =" + eid;
@@ -147,7 +158,18 @@ namespace DB_Term_Project
 
         protected void EidTextBox_TextChanged(object sender, EventArgs e)
         {
+<<<<<<< HEAD
             eid = Convert.ToInt32(EidTextBox.Text);   
+=======
+            if (EidTextBox.Text != String.Empty)
+            {
+                eid = Convert.ToInt32(EidTextBox.Text);
+            }
+            else
+            {
+                eid = (int)Session["Eid"];
+            }
+>>>>>>> origin/Jesse
         }
     }
 }
