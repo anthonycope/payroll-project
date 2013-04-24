@@ -16,7 +16,7 @@ namespace DB_Term_Project
     {
         //Keeps track of the items on the navigation bar; they're listed in the order in which
         // they appear in the navigation bar. This makes it easier to reference those items by index later.
-        private enum items {viewHours, approvalRequest, addHours, /*myPay,*/ createUser, /*payRoll,*/ modifyInfo, approveHours, search, about };
+        private enum items { approvalRequest, addHours, /*myPay,*/ viewHours, createUser, /*payRoll,*/ modifyInfo, approveHours, search, about, administrateHours };
 
         //Menu item IDs
         static string createUserID = "New User"; //ID for MenuItem_createUserItem object
@@ -27,7 +27,8 @@ namespace DB_Term_Project
         static string modifyInfoID = "Modify Info";
         static string approvalRequestID = "Approval Request";
         static string searchID = "Search";
-        static string viewHoursID = "View Hours";
+        static string viewHoursID = "Administrate Hours";
+        //static string administrateHoursID = "Administrate Hours";
 
 
         /*Items (options) to be added to navigation bar at run-time based on the type of user that is logged in.*/
@@ -40,6 +41,7 @@ namespace DB_Term_Project
         private MenuItem MenuItem_approvalRequest = new MenuItem (approvalRequestID, approvalRequestID);
         private MenuItem MenuItem_search = new MenuItem(searchID, searchID);
         private MenuItem MenuItem_viewHours = new MenuItem(viewHoursID, viewHoursID);
+        //private MenuItem MenuItem_administrateHours = new MenuItem(administrateHoursID, administrateHoursID);
 
 
         protected void Page_Load(object sender, EventArgs e)
@@ -59,6 +61,7 @@ namespace DB_Term_Project
             MenuItem_search.NavigateUrl = "~/Search.aspx";
             MenuItem_addHours.NavigateUrl = "~/AddHours.aspx";
             MenuItem_viewHours.NavigateUrl = "~/ViewHours.aspx";
+           // MenuItem_administrateHours.NavigateUrl = "~/AdministrateHours.aspx";
 
             updateUserOptions(); //Shows appropriate options based on the user's login privileges
         }
@@ -73,7 +76,7 @@ namespace DB_Term_Project
             if (Account.Login.IsLoggedIn)
             {
                 //NavigationMenu.Items.AddAt((int)items.myPay, MenuItem_myPayHistory);
-                NavigationMenu.Items.AddAt((int)items.viewHours, MenuItem_viewHours);
+                
                 NavigationMenu.Items.AddAt((int)items.approvalRequest, MenuItem_approvalRequest);
                 NavigationMenu.Items.AddAt((int)items.addHours, MenuItem_addHours); 
             }
@@ -82,11 +85,14 @@ namespace DB_Term_Project
             /*Add menu options for admin*/
             if (Account.Login.IsAdmin)
             {
+                NavigationMenu.Items.AddAt((int)items.viewHours, MenuItem_viewHours);
                 NavigationMenu.Items.AddAt( (int)items.createUser, MenuItem_createUserItem);
                 //NavigationMenu.Items.AddAt((int)items.payRoll, MenuItem_payrollItem);               
                 NavigationMenu.Items.AddAt((int)items.modifyInfo, MenuItem_modifyInfo);
                 NavigationMenu.Items.AddAt((int)items.approveHours, MenuItem_approveHours);
                 NavigationMenu.Items.AddAt((int)items.search, MenuItem_search);
+                //needs to be added, causes out of bounds exception
+                //NavigationMenu.Items.AddAt((int)items.administrateHours, MenuItem_administrateHours);
             }
     
         }
@@ -107,5 +113,6 @@ namespace DB_Term_Project
               Response.Redirect("/Account/Login.aspx");
            }
         }
+
     }
 }

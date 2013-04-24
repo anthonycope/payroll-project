@@ -13,7 +13,7 @@ namespace DB_Term_Project
    /// </summary>
    public static class ConnectionStringClass
    {
-      private static String connectionString = "Data Source=(local)\\SQLEXPRESS;Initial Catalog=DBProject;Integrated Security=True";
+       private static String connectionString = "Data Source=(local);Initial Catalog=DBProject;Integrated Security=True"; //"Data Source=(local)\\SQLEXPRESS;Initial Catalog=DBProject;Integrated Security=True";
 
       /// <summary>
       /// Returns db's connection string.

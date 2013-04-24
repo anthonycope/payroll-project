@@ -19,6 +19,10 @@
     </FileUpgradeFlags>
     <OldToolsVersion>4.0</OldToolsVersion>
     <UpgradeBackupLocation />
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -64,8 +68,8 @@
     <Content Include="AddHours.aspx" />
     <Content Include="approveHours.aspx" />
     <Content Include="ChangeEmployeeInfo.aspx" />
-    <Content Include="EmployeeApproved.aspx" />
     <Content Include="ViewHours.aspx" />
+    <Content Include="EmployeeApproved.aspx" />
     <Content Include="RequestApproval.aspx" />
     <Content Include="Search.aspx" />
     <Content Include="Styles\Site.css" />
@@ -141,19 +145,19 @@
     <Compile Include="ChangeEmployeeInfo.aspx.designer.cs">
       <DependentUpon>ChangeEmployeeInfo.aspx</DependentUpon>
     </Compile>
-    <Compile Include="EmployeeApproved.aspx.cs">
-      <DependentUpon>EmployeeApproved.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="EmployeeApproved.aspx.designer.cs">
-      <DependentUpon>EmployeeApproved.aspx</DependentUpon>
-    </Compile>
     <Compile Include="ViewHours.aspx.cs">
       <DependentUpon>ViewHours.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="ViewHours.aspx.designer.cs">
       <DependentUpon>ViewHours.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="EmployeeApproved.aspx.cs">
+      <DependentUpon>EmployeeApproved.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EmployeeApproved.aspx.designer.cs">
+      <DependentUpon>EmployeeApproved.aspx</DependentUpon>
     </Compile>
     <Compile Include="RequestApproval.aspx.cs">
       <DependentUpon>RequestApproval.aspx</DependentUpon>

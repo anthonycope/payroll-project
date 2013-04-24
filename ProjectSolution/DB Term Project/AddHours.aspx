@@ -5,13 +5,7 @@
 </asp:Content>
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent"> 
     <h2>
-        Add/Edit Daily HourS</h2>
-<p>
-        Enter Eid&nbsp; // change to use the eid of person logged in automatically</p>
-    <p>
-        <asp:TextBox ID="EidTextBox" runat="server" 
-            ontextchanged="EidTextBox_TextChanged"></asp:TextBox>
-    &nbsp;</p>
+        Add/Edit Daily Hours</h2>
 <p>
         Select Day
         <asp:Calendar ID="Calendar1" runat="server" 

@@ -21,7 +21,7 @@
             <asp:LinkButton ID="LoginLink" runat="server" onclick="LoginLink_Click">Login</asp:LinkButton>
             </div>
             <div class="clear hideSkiplink">
-                <asp:Menu ID="NavigationMenu" runat="server" CssClass="menu" EnableViewState="false" IncludeStyleBlock="false" Orientation="Horizontal">
+                <asp:Menu ID="NavigationMenu" runat="server" CssClass="menu" EnableViewState="false" IncludeStyleBlock="false" Orientation="Horizontal" >
                     <Items>
                     </Items>
                 </asp:Menu>

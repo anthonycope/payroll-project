@@ -13,15 +13,6 @@ namespace DB_Term_Project {
     public partial class AddHours {
         
         /// <summary>
-        /// EidTextBox control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox EidTextBox;
-        
-        /// <summary>
         /// Calendar1 control.
         /// </summary>
         /// <remarks>

@@ -12,7 +12,7 @@ namespace DB_Term_Project
     {
         DateTime daySelected = DateTime.MaxValue;
         int eid = 0;
-        String connectionString = "Data Source=(local)\\SQLEXPRESS;Initial Catalog=DBProject;Integrated Security=True";
+        String connectionString = ConnectionStringClass.ConnectionString;
         //Anthony's Connection// "Data Source=(local);Initial Catalog=DBProject;Integrated Security=True"
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -78,13 +78,13 @@ namespace DB_Term_Project
                 //reset variables
                 Session["SelectedDate"] = null;
                 Session["DayHours"] = null;
-                Session["Eid"] = null;
+                Session["TempEid"] = null;
 
                 daySelected = DateTime.MaxValue;
-                eid = 0;
+                //eid = 0;
 
                 Calendar1.SelectedDates.Clear();
-                EidTextBox.Text =EidTextBox.Text.Remove(0);
+                //EidTextBox.Text =EidTextBox.Text.Remove(0);
             }
         }
 
@@ -108,8 +108,8 @@ namespace DB_Term_Project
 
         protected void EidTextBox_TextChanged(object sender, EventArgs e)
         {
-            Session["Eid"] = Convert.ToInt32(EidTextBox.Text);
-            eid = (int)Session["Eid"];
+            //Session["TempEid"] = Convert.ToInt32(EidTextBox.Text);
+            //eid = (int)Session["TempEid"];
         }
 
         protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
