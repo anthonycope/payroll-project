@@ -100,11 +100,11 @@ namespace DB_Term_Project
               //admin and user options will be gone
               Account.Login.IsLoggedIn = false;
               Account.Login.IsAdmin = false;
-              Response.Redirect("/Default.aspx");
-           }
-           else
-           {
               Response.Redirect("/Account/Login.aspx");
+           }
+           else //Redirect user to add hours page upon login
+           {
+              Response.Redirect("/AddHours.aspx");
            }
         }
     }

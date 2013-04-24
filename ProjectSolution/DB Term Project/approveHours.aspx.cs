@@ -12,12 +12,16 @@ namespace DB_Term_Project
     public partial class approveHours : System.Web.UI.Page
     {
         public string mgrid { get; set; }
-        String connectionString = "Data Source=(local)\\SQLEXPRESS;Initial Catalog=DBProject;Integrated Security=True";
         //Anthony's Connection// "Data Source=(local);Initial Catalog=DBProject;Integrated Security=True"
 
         protected void Page_Load(object sender, EventArgs e)
         {
             mgrid = "1";
+            //Make connection string consistent with the one used in the rest of the project.
+            SqlDataSource3.ConnectionString = ConnectionStringClass.ConnectionString;
+            SqlDataSource2.ConnectionString = ConnectionStringClass.ConnectionString;
+            SqlDataSource1.ConnectionString = ConnectionStringClass.ConnectionString;
+
         }
 
         protected void WeekHourGridView_SelectedIndexChanged(object sender, EventArgs e)
@@ -26,7 +30,7 @@ namespace DB_Term_Project
 
             string queryString = "INSERT INTO DBProject.dbo.Approval VALUES(" + row.Cells[1].Text + ",'" + row.Cells[2].Text + "'," + mgrid + "," + row.Cells[4].Text + "," + row.Cells[3].Text + "," + "'Approved')";
             //send to database
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlConnection connection = new SqlConnection(ConnectionStringClass.ConnectionString))
             {
                 SqlCommand command = new SqlCommand(queryString, connection);
                 connection.Open();
@@ -65,7 +69,7 @@ namespace DB_Term_Project
 
             string queryString = "UPDATE DBProject.dbo.Approval SET Approved = 'Approved' WHERE Eid = " + row.Cells[1].Text + " AND weekOf = '" + row.Cells[2].Text + "' AND Amount = " + row.Cells[3].Text;
             //send to database
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlConnection connection = new SqlConnection(ConnectionStringClass.ConnectionString))
             {
                 SqlCommand command = new SqlCommand(queryString, connection);
                 connection.Open();
