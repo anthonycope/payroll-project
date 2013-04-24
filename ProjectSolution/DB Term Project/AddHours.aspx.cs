@@ -13,6 +13,7 @@ namespace DB_Term_Project
         DateTime daySelected = DateTime.MaxValue;
         Double dayHours;
         int eid;
+        bool TextOkay = false;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -20,6 +21,10 @@ namespace DB_Term_Project
             {
                 LiteralEid.Visible = true;
                 EidTextBox.Visible = true;
+                if (Session["TempEid"] != null)
+                {
+                    eid = (int)Session["TempEid"];
+                }
             }
             else
             {
@@ -69,9 +74,10 @@ namespace DB_Term_Project
                 SelectDateLabel.Visible = true;
                 SelectDateLabel.Text = "Please enter the number of hours";
             }
-            else if (InvalidInput1.Visible)
+            else if (InvalidInput1.Visible || InvalidInput2.Visible)
             {
                 // don't execute query
+                SelectDateLabel.Visible = false;
             }
 
             else
@@ -79,10 +85,6 @@ namespace DB_Term_Project
                 SelectDateLabel.Visible = true;
                 //SelectDateLabel.Text = Convert.ToString(daySelected);
 
-                if (EidTextBox.Visible == true)
-                {
-                    eid = Convert.ToInt32(EidTextBox.Text);
-                }
 
                 //loop through days, subtract 1 day each time until day is sunday, use this value for weekOF
                 DateTime weekOf = Calendar1.SelectedDate.Date;
@@ -94,7 +96,6 @@ namespace DB_Term_Project
                 }
 
                 weekOf = weekOf.Date;
-
 
                 //send to database
                 using (SqlConnection conn = new SqlConnection(ConnectionStringClass.ConnectionString))
@@ -140,7 +141,22 @@ namespace DB_Term_Project
             {
                 if (EidTextBox.Text != String.Empty)
                 {
-                    eid = Convert.ToInt32(EidTextBox.Text);
+                    int temp;
+                    bool validInt = Int32.TryParse(EidTextBox.Text, out temp);
+                    if (!validInt)
+                    {
+                        // print out error
+                        InvalidInput2.Visible = true;
+                        //EidTextBox.Text = "";
+                    }
+
+                    else
+                    {
+                        Session["TempEid"] = temp;
+                        eid = (int)Session["TempEid"];
+                        InvalidInput2.Visible = false;
+                    }
+ 
                 }
                 else
                 {
@@ -157,7 +173,22 @@ namespace DB_Term_Project
 
             if (EidTextBox.Text != String.Empty)
             {
-                eid = Convert.ToInt32(EidTextBox.Text);
+                int temp;
+                bool validInt = Int32.TryParse(EidTextBox.Text, out temp);
+                if (!validInt)
+                {
+                    // print out error
+                    InvalidInput2.Visible = true;
+                    //EidTextBox.Text = "";
+                }
+
+                else
+                {
+                    Session["TempEid"] = temp;
+                    eid = (int)Session["TempEid"];
+                    InvalidInput2.Visible = false;
+                }
+ 
             }
             else
             {

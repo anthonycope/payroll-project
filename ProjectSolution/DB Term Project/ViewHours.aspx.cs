@@ -51,7 +51,17 @@ namespace DB_Term_Project
 
         protected void EidTextBox_TextChanged(object sender, EventArgs e)
         {
-            eid = Convert.ToInt32(EidTextBox.Text);
+            int temp;
+            bool validInt = Int32.TryParse(EidTextBox.Text, out temp);
+            if (!validInt)
+            {
+                // print out error
+               //
+            }
+            else
+            {
+                eid = temp;
+            }
         }    
     }
 }

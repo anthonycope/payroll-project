@@ -11,7 +11,10 @@
     <p>
         <asp:TextBox ID="EidTextBox" runat="server" 
             ontextchanged="EidTextBox_TextChanged" Visible="False"></asp:TextBox>
-    &nbsp;</p>
+    &nbsp;<asp:Literal ID="InvalidInput2" runat="server" 
+            Text="&lt;span style='color:red;'&gt;Invalid Input&lt;/span&gt;" 
+            Visible="False"></asp:Literal>
+    </p>
 <p>
         Select Day
         <asp:Calendar ID="Calendar1" runat="server" 
@@ -44,7 +47,7 @@
     <asp:TextBox ID="HoursTextBox" runat="server" 
         ontextchanged="HoursTextBox_TextChanged"></asp:TextBox>
     <asp:Literal ID="InvalidInput1" runat="server" 
-            Text="<span style='color:red;'>Invalid Hours</span>" 
+            Text="&lt;span style='color:red;'&gt;Invalid Input&lt;/span&gt;" 
             Visible="False"></asp:Literal>
     <br />
     <br />
