@@ -75,14 +75,14 @@ namespace DB_Term_Project
                 //NavigationMenu.Items.AddAt((int)items.myPay, MenuItem_myPayHistory);
                 //NavigationMenu.Items.AddAt((int)items.viewHours, MenuItem_viewHours);
                 NavigationMenu.Items.Add (MenuItem_approvalRequest);
-                NavigationMenu.Items.Add (MenuItem_addHours); 
+                NavigationMenu.Items.Add (MenuItem_addHours);
+                NavigationMenu.Items.Add(MenuItem_employeeApproved);
             }
 
 
             /*Add menu options for admin*/
             if (Account.Login.IsAdmin)
             {
-                NavigationMenu.Items.Add(MenuItem_employeeApproved);
                 NavigationMenu.Items.Add( MenuItem_createUserItem);
                 //NavigationMenu.Items.AddAt((int)items.payRoll, MenuItem_payrollItem);               
                 NavigationMenu.Items.Add (MenuItem_modifyInfo);
