@@ -105,7 +105,7 @@ namespace DB_Term_Project
            }
            else //Redirect user to add hours page upon login
            {
-              Response.Redirect("~/Account/Login.aspx");
+              Response.Redirect("~/AddHours.aspx");
            }
         }
     }
