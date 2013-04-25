@@ -14,10 +14,6 @@ namespace DB_Term_Project
 {
     public partial class SiteMaster : System.Web.UI.MasterPage
     {
-        //Keeps track of the items on the navigation bar; they're listed in the order in which
-        // they appear in the navigation bar. This makes it easier to reference those items by index later.
-        private enum items {/*viewHours,*/ approvalRequest, addHours, /*myPay,*/ createUser, /*payRoll,*/ modifyInfo, approveHours, search, about };
-
         //Menu item IDs
         static string createUserID = "New User"; //ID for MenuItem_createUserItem object
         static string payrollID = "Payroll"; //ID for MenuItem_payrollItem object
@@ -28,6 +24,7 @@ namespace DB_Term_Project
         static string approvalRequestID = "Approval Request";
         static string searchID = "Search";
         static string viewHoursID = "View Hours";
+        static string employeeApprovedID = "Approval history";
 
 
         /*Items (options) to be added to navigation bar at run-time based on the type of user that is logged in.*/
@@ -40,6 +37,8 @@ namespace DB_Term_Project
         private MenuItem MenuItem_approvalRequest = new MenuItem (approvalRequestID, approvalRequestID);
         private MenuItem MenuItem_search = new MenuItem(searchID, searchID);
         private MenuItem MenuItem_viewHours = new MenuItem(viewHoursID, viewHoursID);
+        private MenuItem MenuItem_employeeApproved = new MenuItem(employeeApprovedID, employeeApprovedID);
+
 
 
         protected void Page_Load(object sender, EventArgs e)
@@ -59,6 +58,7 @@ namespace DB_Term_Project
             MenuItem_search.NavigateUrl = "~/Search.aspx";
             MenuItem_addHours.NavigateUrl = "~/AddHours.aspx";
             MenuItem_viewHours.NavigateUrl = "~/ViewHours.aspx";
+            MenuItem_employeeApproved.NavigateUrl = "~/EmployeeApproved.aspx";
 
             updateUserOptions(); //Shows appropriate options based on the user's login privileges
         }
@@ -74,19 +74,20 @@ namespace DB_Term_Project
             {
                 //NavigationMenu.Items.AddAt((int)items.myPay, MenuItem_myPayHistory);
                 //NavigationMenu.Items.AddAt((int)items.viewHours, MenuItem_viewHours);
-                NavigationMenu.Items.AddAt((int)items.approvalRequest, MenuItem_approvalRequest);
-                NavigationMenu.Items.AddAt((int)items.addHours, MenuItem_addHours); 
+                NavigationMenu.Items.Add (MenuItem_approvalRequest);
+                NavigationMenu.Items.Add (MenuItem_addHours); 
             }
 
 
             /*Add menu options for admin*/
             if (Account.Login.IsAdmin)
             {
-                NavigationMenu.Items.AddAt( (int)items.createUser, MenuItem_createUserItem);
+                NavigationMenu.Items.Add(MenuItem_employeeApproved);
+                NavigationMenu.Items.Add( MenuItem_createUserItem);
                 //NavigationMenu.Items.AddAt((int)items.payRoll, MenuItem_payrollItem);               
-                NavigationMenu.Items.AddAt((int)items.modifyInfo, MenuItem_modifyInfo);
-                NavigationMenu.Items.AddAt((int)items.approveHours, MenuItem_approveHours);
-                NavigationMenu.Items.AddAt((int)items.search, MenuItem_search);
+                NavigationMenu.Items.Add (MenuItem_modifyInfo);
+                NavigationMenu.Items.Add (MenuItem_approveHours);
+                NavigationMenu.Items.Add (MenuItem_search);
             }
     
         }
@@ -100,11 +101,11 @@ namespace DB_Term_Project
               //admin and user options will be gone
               Account.Login.IsLoggedIn = false;
               Account.Login.IsAdmin = false;
-              Response.Redirect("/Account/Login.aspx");
+              Response.Redirect("~/Account/Login.aspx");
            }
            else //Redirect user to add hours page upon login
            {
-              Response.Redirect("/AddHours.aspx");
+              Response.Redirect("~/Account/Login.aspx");
            }
         }
     }

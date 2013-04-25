@@ -22,9 +22,6 @@
             </div>
             <div class="clear hideSkiplink">
                 <asp:Menu ID="NavigationMenu" runat="server" CssClass="menu" EnableViewState="false" IncludeStyleBlock="false" Orientation="Horizontal">
-                    <Items>
-                        <asp:MenuItem NavigateUrl="~/EmployeeApproved.aspx" Text="Approval History" Value="Approval History" />
-                    </Items>
                 </asp:Menu>
             </div>
         </div>
