@@ -24,7 +24,7 @@
             <asp:BoundField DataField="weekOf" HeaderText="weekOf" ReadOnly="True" 
                 SortExpression="weekOf" DataFormatString="{0:d}" />
             <asp:BoundField DataField="Amount" HeaderText="Amount" 
-                SortExpression="Amount" />
+                SortExpression="Amount" ApplyFormatInEditMode="True" DataFormatString="{0:c}" />
             <asp:BoundField DataField="Hours" HeaderText="Hours" SortExpression="Hours" />
             <asp:BoundField DataField="Approved" HeaderText="Approved" 
                 SortExpression="Approved" />
@@ -67,7 +67,7 @@
             <asp:BoundField DataField="Hours_Worked" HeaderText="Hours_Worked" 
                 SortExpression="Hours_Worked" />
             <asp:BoundField DataField="PayCheck" HeaderText="PayCheck" ReadOnly="True" 
-                SortExpression="PayCheck" />
+                SortExpression="PayCheck" DataFormatString="{0:c}" />
         </Columns>
         <EditRowStyle BackColor="#999999" />
         <FooterStyle BackColor="#0c543b" Font-Bold="True" ForeColor="White" />
@@ -99,9 +99,9 @@
             <asp:BoundField DataField="Eid" HeaderText="Eid" ReadOnly="True" 
                 SortExpression="Eid" />
             <asp:BoundField DataField="weekOf" HeaderText="weekOf" ReadOnly="True" 
-                SortExpression="weekOf" />
+                SortExpression="weekOf" DataFormatString="{0:d}" />
             <asp:BoundField DataField="Amount" HeaderText="Amount" 
-                SortExpression="Amount" />
+                SortExpression="Amount" ApplyFormatInEditMode="True" DataFormatString="{0:c}" />
             <asp:BoundField DataField="Hours" HeaderText="Hours" SortExpression="Hours" />
             <asp:BoundField DataField="Approved" HeaderText="Approved" 
                 SortExpression="Approved" />

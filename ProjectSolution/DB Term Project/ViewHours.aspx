@@ -5,7 +5,7 @@
 </asp:Content>
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent"> 
     <h2>
-        View Employee daily hours</h2>
+        View daily hours</h2>
 <p>
        <asp:Literal ID="LiteralEid" runat="server" Visible="false">Enter Eid</asp:Literal></p>
     <p>

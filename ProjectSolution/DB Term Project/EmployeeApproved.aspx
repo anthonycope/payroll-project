@@ -23,27 +23,40 @@
         </asp:DropDownList>
         <asp:SqlDataSource ID="SqlDataSource3" runat="server" 
             ConnectionString="<%$ ConnectionStrings:DBProjectConnectionString %>" 
-            SelectCommand="SELECT [Eid] FROM [Employees]"></asp:SqlDataSource>
+            SelectCommand="SELECT [Eid] FROM [Employees] WHERE mgrid = @eid">
+            <SelectParameters>
+                <asp:SessionParameter Name="eid" SessionField="Eid" />
+            </SelectParameters>
+        </asp:SqlDataSource>
     </p>
     <p>
         &nbsp;</p>
     <p class="style3">
         <strong>Approved Hours</strong></p>
     <p class="style2">
-        <asp:GridView ID="GridView1" runat="server" AllowPaging="True" 
-            AllowSorting="True" AutoGenerateColumns="False" DataSourceID="SqlDataSource1">
+        <asp:GridView ID="GridView1" runat="server" AllowPaging="True" AutoGenerateColumns="False" DataSourceID="SqlDataSource1" CellPadding="4" ForeColor="#333333" GridLines="None">
+            <AlternatingRowStyle BackColor="White" />
             <Columns>
                 <asp:BoundField DataField="weekOf" HeaderText="weekOf" 
-                    SortExpression="weekOf" />
-                <asp:BoundField DataField="mgrid" HeaderText="mgrid" SortExpression="mgrid" />
-                <asp:BoundField DataField="Amount" HeaderText="Amount" 
-                    SortExpression="Amount" />
-                <asp:BoundField DataField="Hours" HeaderText="Hours" SortExpression="Hours" />
+                    SortExpression="weekOf" DataFormatString="{0:d}" />
+                <asp:BoundField DataField="Amount" HeaderText="Amount" SortExpression="Amount" DataFormatString="{0:c}" />
+                <asp:BoundField DataField="Hours" HeaderText="Hours" 
+                    SortExpression="Hours" />
             </Columns>
+            <EditRowStyle BackColor="#7C6F57" />
+            <FooterStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White" />
+            <HeaderStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White" />
+            <PagerStyle BackColor="#666666" ForeColor="White" HorizontalAlign="Center" />
+            <RowStyle BackColor="#E3EAEB" />
+            <SelectedRowStyle BackColor="#C5BBAF" Font-Bold="True" ForeColor="#333333" />
+            <SortedAscendingCellStyle BackColor="#F8FAFA" />
+            <SortedAscendingHeaderStyle BackColor="#246B61" />
+            <SortedDescendingCellStyle BackColor="#D4DFE1" />
+            <SortedDescendingHeaderStyle BackColor="#15524A" />
         </asp:GridView>
         <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
             ConnectionString="<%$ ConnectionStrings:DBProjectConnectionString %>" 
-            SelectCommand="SELECT [weekOf], [mgrid], [Amount], [Hours] FROM [Approval] WHERE eid = 0 AND Approved = 'Approved'">
+            SelectCommand="SELECT [weekOf], [Amount], [Hours] FROM [Approval] WHERE eid = 0 AND Approved = 'Approved'">
         </asp:SqlDataSource>
     </p>
     <p>
@@ -52,19 +65,29 @@
         <strong>Hours Pending Approval</strong></p>
     <p class="style2">
         <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" 
-            DataSourceID="SqlDataSource2">
+            DataSourceID="SqlDataSource2" CellPadding="4" ForeColor="#333333" GridLines="None">
+            <AlternatingRowStyle BackColor="White" />
             <Columns>
                 <asp:BoundField DataField="weekOf" HeaderText="weekOf" 
-                    SortExpression="weekOf" />
+                    SortExpression="weekOf" DataFormatString="{0:d}" />
                 <asp:BoundField DataField="Amount" HeaderText="Amount" 
-                    SortExpression="Amount" />
+                    SortExpression="Amount" DataFormatString="{0:c}" />
                 <asp:BoundField DataField="Hours" HeaderText="Hours" SortExpression="Hours" />
-                <asp:BoundField DataField="mgrid" HeaderText="mgrid" SortExpression="mgrid" />
             </Columns>
+            <EditRowStyle BackColor="#7C6F57" />
+            <FooterStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White" />
+            <HeaderStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White" />
+            <PagerStyle BackColor="#666666" ForeColor="White" HorizontalAlign="Center" />
+            <RowStyle BackColor="#E3EAEB" />
+            <SelectedRowStyle BackColor="#C5BBAF" Font-Bold="True" ForeColor="#333333" />
+            <SortedAscendingCellStyle BackColor="#F8FAFA" />
+            <SortedAscendingHeaderStyle BackColor="#246B61" />
+            <SortedDescendingCellStyle BackColor="#D4DFE1" />
+            <SortedDescendingHeaderStyle BackColor="#15524A" />
         </asp:GridView>
         <asp:SqlDataSource ID="SqlDataSource2" runat="server" 
             ConnectionString="<%$ ConnectionStrings:DBProjectConnectionString %>" 
-            SelectCommand="SELECT [weekOf], [Amount], [Hours], [mgrid] FROM [Approval] WHERE eid = 0 AND APPROVED = 'Awaiting Approval'">
+            SelectCommand="SELECT [weekOf], [Amount], [Hours] FROM [Approval] WHERE eid = 0 AND APPROVED = 'Awaiting Approval'">
         </asp:SqlDataSource>
     </p>
 </asp:Content>

@@ -12,7 +12,7 @@
             onselectionchanged="Calendar1_SelectionChanged"></asp:Calendar>
     </p>
     <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource1"  CellPadding="4" 
-        ForeColor="#333333" GridLines="None" ShowHeaderWhenEmpty="True">
+        ForeColor="#333333" GridLines="None">
         <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
         <Columns>
             <asp:BoundField DataField="weekOf" HeaderText="weekOf" 

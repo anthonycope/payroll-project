@@ -49,7 +49,7 @@ namespace DB_Term_Project
                 {
                     //weekOf.Subtract(TimeSpan.FromDays(1)); // subtract a day
                     weekOf = weekOf.AddDays(-1);
-                    SelectDateLabel.Text = Convert.ToString(weekOf);
+                    //SelectDateLabel.Text = Convert.ToString(weekOf);
                 }
 
                 weekOf = weekOf.Date;
@@ -98,7 +98,7 @@ namespace DB_Term_Project
             {
                 //weekOf.Subtract(TimeSpan.FromDays(1)); // subtract a day
                 weekOf = weekOf.AddDays(-1);
-                SelectDateLabel.Text = Convert.ToString(weekOf);
+                //SelectDateLabel.Text = Convert.ToString(weekOf);
             }
 
             weekOf = weekOf.Date;
