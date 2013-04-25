@@ -14,7 +14,7 @@
     Employees Weeks Awaiting Approval</strong></span><br />
     <asp:GridView ID="GridViewAwaitingApproval" runat="server" AutoGenerateColumns="False" 
         DataKeyNames="Eid,weekOf" DataSourceID="SqlDataSource3" AllowPaging="True" 
-        AllowSorting="True" ShowHeaderWhenEmpty="true" 
+        AllowSorting="True" ShowHeaderWhenEmpty="True" 
         onselectedindexchanged="GridViewAwaitingApproval_SelectedIndexChanged">
         <Columns>
             <asp:CommandField SelectText="Approve" ShowSelectButton="True" 
@@ -22,7 +22,7 @@
             <asp:BoundField DataField="Eid" HeaderText="Eid" ReadOnly="True" 
                 SortExpression="Eid" />
             <asp:BoundField DataField="weekOf" HeaderText="weekOf" ReadOnly="True" 
-                SortExpression="weekOf" />
+                SortExpression="weekOf" DataFormatString="{0:d}" />
             <asp:BoundField DataField="Amount" HeaderText="Amount" 
                 SortExpression="Amount" />
             <asp:BoundField DataField="Hours" HeaderText="Hours" SortExpression="Hours" />
@@ -63,7 +63,7 @@
             <asp:BoundField DataField="Eid" HeaderText="Eid" ReadOnly="True" 
                 SortExpression="Eid" />
             <asp:BoundField DataField="weekOf" HeaderText="weekOf" ReadOnly="True" 
-                SortExpression="weekOf" />
+                SortExpression="weekOf" DataFormatString="{0:d}" />
             <asp:BoundField DataField="Hours_Worked" HeaderText="Hours_Worked" 
                 SortExpression="Hours_Worked" />
             <asp:BoundField DataField="PayCheck" HeaderText="PayCheck" ReadOnly="True" 
