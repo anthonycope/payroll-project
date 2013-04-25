@@ -22,13 +22,13 @@ namespace DB_Term_Project {
         protected global::System.Web.UI.WebControls.ContentPlaceHolder HeadContent;
         
         /// <summary>
-        /// HeadLoginView control.
+        /// LoginLink control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LoginView HeadLoginView;
+        protected global::System.Web.UI.WebControls.LinkButton LoginLink;
         
         /// <summary>
         /// NavigationMenu control.

@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Data.Sql;
+using System.Data.SqlClient;
+using System.Data.SqlTypes;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,7 +14,6 @@ namespace DB_Term_Project.Account
     {
         static bool isAdmin = false;
         static bool isLoggedIn = false;
-        string adminPassword = "f%x`gAC3[y{6L1z0";
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -20,25 +22,63 @@ namespace DB_Term_Project.Account
 
         protected void LoginUser_Authenticate(object sender, AuthenticateEventArgs e)
         {
-
+           
         }
 
         /// <summary>
-        /// Allows login as administrator to create an account. This will be under the "Authenticate" event
-        /// once we get the database connected to this project.
+        /// Check validity of username and password. Also check whether the user is an admin or not.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         protected void LoginButton_Click(object sender, EventArgs e)
         {
-            if (LoginUser.UserName == "admin" && LoginUser.Password == adminPassword)
-            {
-                isAdmin = !isAdmin; //For debugging purposes until we get the solution connected to the database.
-                isLoggedIn = !isLoggedIn; //For debugging purposes
-                Response.Redirect("/Default.aspx");                
-            }
-            else
-                isAdmin = false;
+           using (SqlConnection connection = new SqlConnection(ConnectionStringClass.ConnectionString))
+           {
+              using (SqlCommand command = new SqlCommand())
+              {
+                 /*The following code checks if the user's username and password are valid. It also checks if 
+                   the user is an admin user*/
+                 bool isValidLogin = false;
+                 int eid = 0;
+
+                 command.CommandText = "SELECT *" +
+                                       " FROM Employees" +
+                                       " WHERE upper(username) = upper(@username) AND password = @password";
+                 command.Parameters.AddWithValue("@username", LoginUser.UserName);
+                 command.Parameters.AddWithValue("@password", LoginUser.Password);
+                 command.Connection = connection;
+
+                 try
+                 {
+                    connection.Open();
+                    SqlDataReader reader = command.ExecuteReader ();
+                    isValidLogin = reader.HasRows;
+
+                    //If login is valid, get Eid and isAdmin column values.
+                    if (isValidLogin)
+                    {
+                       reader.Read();
+                       eid = (int)reader["Eid"];
+                       isAdmin = (byte) reader ["isAdmin"] == 1? true : false;
+                       Session["Eid"] = eid;
+                       Session["isAdmin"] = isAdmin;
+                    }
+                    connection.Close();
+                 }
+                 catch
+                 {
+                    connection.Close();
+                    Page.RegisterClientScriptBlock("mes", "<script language='javascript'>alert('Sorry, an error occurred. Are you connected to the database?')</script>");
+                    return;
+                 }
+
+                 if (isValidLogin)
+                 {
+                    isLoggedIn = true;
+                    Response.Redirect("/AddHours.aspx");
+                 }
+              }
+           }
         }
 
         /// <summary>
@@ -47,6 +87,7 @@ namespace DB_Term_Project.Account
         /// </summary>
         static public bool IsAdmin
         {
+           set { isAdmin = value; }
             get { return isAdmin; }
         }
 
@@ -55,6 +96,7 @@ namespace DB_Term_Project.Account
         /// </summary>
         static public bool IsLoggedIn
         {
+           set { isLoggedIn = value; }
             get { return isLoggedIn; }
         }
     }

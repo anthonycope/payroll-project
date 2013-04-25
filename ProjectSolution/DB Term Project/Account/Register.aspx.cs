@@ -1,4 +1,9 @@
-﻿using System;
+﻿/*
+ * Description: Create a user from an admin account. Note that it is assumed that an admin user a manager and that
+ * the admin A creating the user U is U's manager.
+ */
+
+using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
@@ -11,67 +16,94 @@ namespace DB_Term_Project.Account
 {
     public partial class Register : System.Web.UI.Page
     {
-        String connectionString = "Data Source=(local);Initial Catalog=DBProject;Integrated Security=True";// "Data Source=Henrys-PC;Initial Catalog=DBProject;Integrated Security=True";
-        //anthonys //"Data Source=(local);Initial Catalog=DBProject;Integrated Security=True"
-        protected void Page_Load(object sender, EventArgs e)
-        {
-            RegisterUser.ContinueDestinationPageUrl = Request.QueryString["ReturnUrl"];
-        }
+       protected void Page_Load(object sender, EventArgs e)
+       {
+          usernameErrorLabel.Visible = false;
+       }
 
-        protected void RegisterUser_CreatedUser(object sender, EventArgs e)
-        {
-           Random randomGenerator = new Random();
+       protected void CreateUserButton_Click(object sender, EventArgs e)
+       {
+          Random randomGenerator = new Random();
 
-           bool isManager = AccountTypeDropDown.SelectedValue == "admin" ? true : false; //Set isManager to True iff the user type is "Admin".
-           int eid = randomGenerator.Next(1, int.MaxValue); //Eid will be randomly generated for each employee.
-           
+          bool isAdmin = AccountTypeDropDown.SelectedValue == "admin" ? true : false; //Set isAdmin to True iff the user type is "Admin".
+          int eid = randomGenerator.Next(1, int.MaxValue); //Eid will be randomly generated for each employee.
 
-            FormsAuthentication.SetAuthCookie(RegisterUser.UserName, false /* createPersistentCookie */);
-            string continueUrl = RegisterUser.ContinueDestinationPageUrl;
+          //FormsAuthentication.SetAuthCookie(RegisterUser.UserName, false /* createPersistentCookie */);
+          //string continueUrl = RegisterUser.ContinueDestinationPageUrl;
 
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-               using (SqlCommand command = new SqlCommand())
-               {
-                  Int32 rowsAffected;
-                  command.CommandText = "INSERT INTO Employees (Eid,firstname, lastname, username, password, address, position, mgrid, birthdate) " +
-                                    "values ('@eid','@first', '@last','@user','@pass', '@address', '@position', '@mgrID', '@birthdate')";
-                  command.Connection = connection;
+          using (SqlConnection connection = new SqlConnection(ConnectionStringClass.ConnectionString))
+          {
+             using (SqlCommand command = new SqlCommand())
+             {
+                /*Check if the username already exists*/
+                command.CommandText = "SELECT * FROM Employees WHERE upper (username) = upper (@username)";
+                command.Connection = connection;
+                command.Parameters.AddWithValue("@username", UserName.Text);
 
-                  command.Parameters.AddWithValue("first", FirstnameTextBox.Text);
-                  command.Parameters.AddWithValue("last", LastnameTextBox.Text);
-                  command.Parameters.AddWithValue("user", RegisterUser.UserName);
-                  command.Parameters.AddWithValue("pass", RegisterUser.Password);
-                  command.Parameters.AddWithValue("address", AddressTextBox.Text);
-                  command.Parameters.AddWithValue("position", PositionTextBox.Text);
-                  command.Parameters.AddWithValue("mgrid", 1); //Set manager id to the id of the user creating this account
-                  command.Parameters.AddWithValue("birthdate", BirthdayTextBox.Text);
-                  command.Parameters.AddWithValue("eid", eid);
+                try
+                {
+                   connection.Open();
 
-                  try
-                  {
-                     connection.Open();
-                     rowsAffected = command.ExecuteNonQuery();
-                     connection.Close();
-                  }
-                  catch
-                  {
-                     //Display error message.
-                  }
-               }
-            }
+                   SqlDataReader reader = command.ExecuteReader();
+                   if (reader.HasRows) //If the query returns anything, then the username already exists.
+                   {
+                      usernameErrorLabel.Visible = true;
+                      return;
+                   }
 
-            if (String.IsNullOrEmpty(continueUrl))
-            {
-                continueUrl = "~/";
-            }
-            Response.Redirect(continueUrl);
-        }
+                   connection.Close();
+                }
+                catch //Display error message
+                {
+                   connection.Close();
+                   Page.RegisterClientScriptBlock("mes", "<script language='javascript'>alert('Sorry, an error occurred')</script>");;
+                   return;
+                }
+                /*End username check*/
 
-        private Exception Exception(string p)
-        {
-           throw new NotImplementedException();
-        }
+                /*Create new user*/
+                command.CommandText = "INSERT INTO Employees (Eid,firstname, lastname, username, password, address, position, mgrid, birthdate, isAdmin, wage) " +
+                                  "values (@eid,@first, @last,@user,@pass, @address, @position, @mgrID, @birthdate, @isAdmin, @wage)";
 
+
+                command.Parameters.AddWithValue("@first", FirstnameTextBox.Text);
+                command.Parameters.AddWithValue("@last", LastnameTextBox.Text);
+                command.Parameters.AddWithValue("@user", UserName.Text);
+                command.Parameters.AddWithValue("@pass", Password.Text);
+                command.Parameters.AddWithValue("@address", AddressTextBox.Text);
+                command.Parameters.AddWithValue("@position", PositionTextBox.Text);
+                command.Parameters.AddWithValue("@mgrid", Session["eid"]); //Set manager id to the id of the user creating this account
+                command.Parameters.AddWithValue("@birthdate", BirthdayTextBox.Text);
+                command.Parameters.AddWithValue("@eid", eid);
+                command.Parameters.AddWithValue("@isAdmin", isAdmin);
+                command.Parameters.AddWithValue("@wage", Double.Parse (WageTextBox.Text ) );
+
+
+                try
+                {
+                   connection.Open();
+                   command.ExecuteNonQuery();
+                   connection.Close();
+                }
+                catch
+                {
+                   Page.RegisterClientScriptBlock("mes", "<script language='javascript'>alert('Sorry, an error occurred')</script>");
+                   return;
+                }
+
+                Page.RegisterClientScriptBlock("mes", "<script language='javascript'>alert('User created.')</script>");
+                clearPageContents();
+             } //end inner using
+          }//end outer using
+       } // end function
+
+       /// <summary>
+       /// Clears the contents of all textboxes
+       /// </summary>
+       private void clearPageContents()
+       {
+          FirstnameTextBox.Text = LastnameTextBox.Text = PositionTextBox.Text = BirthdayTextBox.Text = AddressTextBox.Text = WageTextBox.Text
+             = UserName.Text = Password.Text = ConfirmPassword.Text = "";
+       }
     }
 }

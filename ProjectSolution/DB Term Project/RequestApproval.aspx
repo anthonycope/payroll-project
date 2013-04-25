@@ -7,32 +7,22 @@
     <h2>
         Request TimeSheet Approval</h2>
 <p>
-        Enter Eid&nbsp; // change to use the eid of person logged in automatically</p>
-    <p>
-        <asp:TextBox ID="EidTextBox" runat="server" 
-            ontextchanged="EidTextBox_TextChanged"></asp:TextBox>
-    </p>
-<p>
         Select Week
         <asp:Calendar ID="Calendar1" runat="server" 
             onselectionchanged="Calendar1_SelectionChanged"></asp:Calendar>
     </p>
-    <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" 
-        DataKeyNames="Eid,weekOf" DataSourceID="SqlDataSource1" 
-        onselectedindexchanged="GridView1_SelectedIndexChanged" CellPadding="4" 
-        ForeColor="#333333" GridLines="None" ShowHeaderWhenEmpty="True">
+    <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource1"  CellPadding="4" 
+        ForeColor="#333333" GridLines="None">
         <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
         <Columns>
-            <asp:BoundField DataField="Eid" HeaderText="Eid" ReadOnly="True" 
-                SortExpression="Eid" />
-            <asp:BoundField DataField="weekOf" HeaderText="weekOf" ReadOnly="True" 
-                SortExpression="weekOf" DataFormatString="{0:d}" InsertVisible="False" />
+            <asp:BoundField DataField="weekOf" HeaderText="weekOf" 
+                SortExpression="weekOf" DataFormatString="{0:d}" />
             <asp:BoundField DataField="Hours_Worked" HeaderText="Hours_Worked" 
                 SortExpression="Hours_Worked" />
         </Columns>
         <EditRowStyle BackColor="#999999" />
-        <FooterStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
-        <HeaderStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
+        <FooterStyle BackColor="#0c543b" Font-Bold="True" ForeColor="White" />
+        <HeaderStyle BackColor="#0c543b" Font-Bold="True" ForeColor="White" />
         <PagerStyle BackColor="#284775" ForeColor="White" HorizontalAlign="Center" />
         <RowStyle BackColor="#F7F6F3" ForeColor="#333333" />
         <SelectedRowStyle BackColor="#E2DED6" Font-Bold="True" ForeColor="#333333" />
@@ -42,11 +32,11 @@
         <SortedDescendingHeaderStyle BackColor="#6F8DAE" />
     </asp:GridView>
     <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
-        ConnectionString="<%$ ConnectionStrings:DBProjectConnectionString2 %>" 
-        SelectCommand="SELECT Eid, weekOf, Hours_Worked FROM Weekly_Hours WHERE (Eid = @eid) AND (weekOf = @weekOf)">
+
+        ConnectionString="<%$ ConnectionStrings:DBProjectConnectionString %>" 
+        SelectCommand="SELECT weekOf, Hours_Worked FROM Weekly_Hours WHERE (Eid = @eid) AND (weekOf = @weekOf)">
         <SelectParameters>
-            <asp:ControlParameter ControlID="EidTextBox" DefaultValue="" Name="eid" 
-                PropertyName="Text" />
+            <asp:SessionParameter DefaultValue="" Name="eid" SessionField="Eid" />
             <asp:ControlParameter ControlID="HiddenField1" DefaultValue="" Name="weekOf" 
                 PropertyName="Value" />
         </SelectParameters>

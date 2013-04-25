@@ -13,7 +13,12 @@ namespace DB_Term_Project
    /// </summary>
    public static class ConnectionStringClass
    {
+<<<<<<< HEAD
       private static String connectionString = "Data Source=(local);Initial Catalog=DBProject;Integrated Security=True";
+=======
+      private static String connectionString = "Data Source=(local);Initial Catalog=DBProject;Integrated Security=True";// "Data Source=(local)\\SQLEXPRESS;Initial Catalog=DBProject;Integrated Security=True";
+      //"Data Source=(local);Initial Catalog=DBProject;Integrated Security=True"
+>>>>>>> Developer
 
       /// <summary>
       /// Returns db's connection string.
@@ -26,20 +31,13 @@ namespace DB_Term_Project
 
     public partial class _Default : System.Web.UI.Page
     {
-        //string position = "";
         protected void Page_Load(object sender, EventArgs e)
         {
-
-        }
-
-        protected void TextBox1_TextChanged(object sender, EventArgs e)
-        {
-            //position = TextBox1.Text;
-        }
-
-        protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
+           //Redirect user to login page if user is not logged in.
+           if (!Account.Login.IsLoggedIn)
+              Response.Redirect("/Account/Login.aspx");
+           else
+              Response.Redirect("/AddHours.aspx");
         }
     }
 }
