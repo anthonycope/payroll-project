@@ -21,7 +21,14 @@ namespace DB_Term_Project
             {
                 LiteralEid.Visible = true;
                 EidTextBox.Visible = true;
-                if (Session["TempEid"] != null)
+                if (EidTextBox.Text == String.Empty)
+                {
+                    if (Session["Eid"] != null)
+                    {
+                        eid = (int)Session["Eid"];
+                    }
+                }
+                else if (Session["TempEid"] != null)
                 {
                     eid = (int)Session["TempEid"];
                 }

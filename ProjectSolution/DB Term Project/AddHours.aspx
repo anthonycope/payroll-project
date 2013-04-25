@@ -18,7 +18,7 @@
 <p>
         Select Day
         <asp:Calendar ID="Calendar1" runat="server" 
-            onselectionchanged="Calendar1_SelectionChanged"></asp:Calendar>
+            onselectionchanged="Calendar1_SelectionChanged" OnLoad="Calendar1_SelectionChanged"></asp:Calendar>
     </p>
     <p>
         <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" 

@@ -12,7 +12,7 @@
         <asp:TextBox ID="EmployeeIDTextBox" runat="server" 
             style="margin-bottom: 0px"></asp:TextBox> 
             <asp:Label ID="employeeIDErrorLabel" runat="server" ForeColor="Red" Visible="false">Employee ID must be a number</asp:Label> 
-        <br /><br />Wage&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+        <br />(cannot change)<br />Wage&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
         <asp:TextBox ID="WageChangeTextBox" runat="server"></asp:TextBox>
             <asp:Label ID="WageErrorLabel" runat="server" ForeColor="Red" Visible="false">Wage must be a number</asp:Label> <br /><br />
         Address&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <asp:TextBox ID="AddressChangeTextBox" runat="server"></asp:TextBox> <br /> <br />
